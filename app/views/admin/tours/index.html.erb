@@ -1,7 +1,16 @@
+<h1>Tours</h1>
+
+<%= link_to "Create Tour &raquo;", new_admin_tour_path %>
+
 <table>
-<% @tours.each do |tour| %>
   <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+<% @tours.each do |tour| %>
+  <tr class="<%= cycle('odd', 'even') %>">
     <td><%= tour.name %></td>
+    <td><%= link_to "Edit", edit_admin_tour_path(tour) %></td>
   </tr>
 <% end %>
 </table>

@@ -9,7 +9,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100113223545) do
+ActiveRecord::Schema.define(:version => 20100130125933) do
+
+  create_table "digs", :force => true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.string   "building"
+    t.integer  "sleeps"
+    t.integer  "number_of_twin_rooms"
+    t.integer  "number_of_double_rooms"
+    t.integer  "number_of_single_rooms"
+    t.integer  "number_of_sofa_beds"
+    t.text     "landlords_notes"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "address_3"
+    t.string   "postcode"
+    t.string   "landline"
+    t.string   "mobile"
+    t.string   "fax"
+    t.text     "remarks"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "theatres", :force => true do |t|
+    t.string   "name"
+    t.string   "postcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tours", :force => true do |t|
     t.string   "name"

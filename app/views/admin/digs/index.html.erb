@@ -1,0 +1,16 @@
+<h1>Digs</h1>
+
+<%= link_to "Create Dig &raquo;", new_admin_dig_path %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+<% @digs.each do |dig| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= dig.name %></td>
+    <td><%= link_to "Edit", edit_admin_dig_path(dig) %></td>
+  </tr>
+<% end %>
+</table>

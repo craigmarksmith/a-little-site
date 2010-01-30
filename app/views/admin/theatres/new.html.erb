@@ -1,0 +1,4 @@
+<% form_for [:admin, @theatre] do |f| %>
+  <%= render :partial => 'theatre_form_elements', :locals => {:f => f} %>
+  <%= f.submit "Create" %>
+<% end %>

@@ -27,8 +27,10 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "homepage"
 
   map.namespace :admin do |admin|
-    admin.homepage '/', :controller => "homepage"
+    admin.homepage '/', :controller => "home"
     admin.resources :tours
+    admin.resources :theatres
+    admin.resources :digs
   end
 
   # See how all your routes lay out with "rake routes"

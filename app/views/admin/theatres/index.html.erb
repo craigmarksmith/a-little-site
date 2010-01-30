@@ -1,0 +1,18 @@
+<h1>Theatres</h1>
+
+<%= link_to "Create Theatre &raquo;", new_admin_theatre_path %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Postcode</th>
+    <th></th>
+  </tr>
+<% @theatres.each do |theatre| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= theatre.name %></td>
+    <td><%= theatre.postcode %></td>
+    <td><%= link_to "Edit", edit_admin_theatre_path(theatre) %></td>
+  </tr>
+<% end %>
+</table>

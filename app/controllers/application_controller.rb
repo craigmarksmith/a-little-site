@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
     $1
   end 
   helper_method(:selected_menu_item)
+
+  def admin_title
+    self.class.name.match(/Admin::(.+)Controller/)
+    return "Admin" if $1 == 'Home'
+    "#{$1} Admin"
+  end
+  helper_method(:admin_title)
 end

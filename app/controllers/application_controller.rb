@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+  def selected_menu_item
+    self.class.name.match(/Admin::(.+)Controller/)
+    $1
+  end 
+  helper_method(:selected_menu_item)
 end

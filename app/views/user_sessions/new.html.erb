@@ -1,11 +1,26 @@
-<% form_for @user_session do |f| %>
-  <p>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </p>
-  <p><%= f.submit "Login" %></p>
-<% end %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>Login</title>
+    <%= stylesheet_link_tag "reset-min" %>
+    <%= stylesheet_link_tag "login" %>
+  </head>
+  <body>
+    <div id='container'>
+      <img src="/images/logo.png" id="logo" />
+      <div id="login-fields-container">
+        <% form_for @user_session do |f| %>
+          <p>
+            <%= f.label :username %><br/>
+            <%= f.text_field :username %>
+          </p>
+          <p>
+            <%= f.label :password %><br/>
+            <%= f.password_field :password %>
+          </p>
+          <p><%= f.submit "Login" %></p>
+        <% end %>
+      </div>
+    </div>
+  </body>
+</html>

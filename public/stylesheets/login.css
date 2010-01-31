@@ -1,0 +1,25 @@
+body {
+  font-family:arial,sans-serif;
+}
+
+p {
+  margin-bottom:10px;
+}
+
+#container {
+  border:2px solid #DDD;
+  width:370px;
+  margin: auto;
+  margin-top:150px;
+
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+
+  padding:30px;
+}
+
+#login-fields-container {
+  margin-top:20px;
+  margin-left:65px;
+}

@@ -26,11 +26,17 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => "homepage"
 
+  map.login 'login', :controller => 'user_sessions', :action => 'new'
+  map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
+
+  map.resources :user_sessions
+
   map.namespace :admin do |admin|
     admin.homepage '/', :controller => "home"
     admin.resources :tours
     admin.resources :theatres
     admin.resources :digs
+    admin.resources :users
   end
 
   # See how all your routes lay out with "rake routes"

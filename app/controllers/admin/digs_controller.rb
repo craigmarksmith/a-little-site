@@ -1,4 +1,4 @@
-class Admin::DigsController < ApplicationController
+class Admin::DigsController < AdminController
   layout 'admin'
 
   def index

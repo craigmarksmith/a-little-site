@@ -5,7 +5,7 @@ class UserSessionsController < ActionController::Base
   
   def create
     @user_session = UserSession.new(params[:user_session])
-    if @user_session.save!
+    if @user_session.save
       redirect_to admin_homepage_url
     else
       render :action => 'new'

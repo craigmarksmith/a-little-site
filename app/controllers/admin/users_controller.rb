@@ -22,5 +22,10 @@ class Admin::UsersController < AdminController
     User.find(params[:id]).update_attributes(params[:user])
     redirect_to :action => 'index'
   end
+  
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to :action => 'index'
+  end
 
 end

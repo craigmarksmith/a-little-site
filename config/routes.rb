@@ -24,12 +24,13 @@ ActionController::Routing::Routes.draw do |map|
   #     products.resources :sales, :collection => { :recent => :get }
   #   end
 
-  map.root :controller => "homepage"
+  map.root :controller => "search", :action => "new"
 
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
 
   map.resources :user_sessions
+  map.search '/search', :controller => 'search', :action => 'search'
 
   map.namespace :admin do |admin|
     admin.homepage '/', :controller => "home"

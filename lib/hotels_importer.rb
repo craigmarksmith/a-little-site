@@ -8,7 +8,7 @@ class HotelsImporter
     FasterCSV.foreach(path, :headers => :first_row) do |row|
       dig_attributes = {
         :name => row['Name'],
-        :type => row['Type'],
+        :dig_type_id => DigType.find_or_create_by_name(row['Type']),
         :building => row['Building'],
         :sleeps => row['Sleeps (up to)'],
         :number_of_twin_rooms => row['Twin'],

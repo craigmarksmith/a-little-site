@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100204124809) do
+ActiveRecord::Schema.define(:version => 20100205125931) do
 
   create_table "dig_types", :force => true do |t|
     t.string   "name"
@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(:version => 20100204124809) do
     t.string   "name"
     t.string   "building"
     t.integer  "sleeps"
-    t.integer  "number_of_twin_rooms"
-    t.integer  "number_of_double_rooms"
-    t.integer  "number_of_single_rooms"
-    t.integer  "number_of_sofa_beds"
+    t.integer  "number_of_twin_rooms",   :default => 0
+    t.integer  "number_of_double_rooms", :default => 0
+    t.integer  "number_of_single_rooms", :default => 0
+    t.integer  "number_of_sofa_beds",    :default => 0
     t.text     "landlords_notes"
     t.string   "address_1"
     t.string   "address_2"

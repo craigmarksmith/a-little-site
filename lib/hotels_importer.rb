@@ -6,25 +6,24 @@ class HotelsImporter
     Dig.delete_all
     
     FasterCSV.foreach(path, :headers => :first_row) do |row|
-      dig_attributes = {
-        :name => row['Name'],
-        :dig_type_id => DigType.find_or_create_by_name(row['Type']),
-        :building => row['Building'],
-        :sleeps => row['Sleeps (up to)'],
-        :number_of_twin_rooms => row['Twin'],
-        :number_of_double_rooms => row['Double'],
-        :number_of_single_rooms => row['Single'],
-        :number_of_sofa_beds => row['Sofa bed'],
-        :landlords_notes => row["Landlord's Notes"],
-        :address_1 => row["Address 1"],
-        :address_2 => row["Address 2"],
-        :address_3 => row["Address 3"],
-        :postcode => row["Postcode"],
-        :landline => row["Landline"],
-        :mobile => row["Mobile"],
-        :fax => row["Fax"],
-        :remarks => row["Remarks"]
-      }
+      dig_attributes = {}
+      dig_attributes[:name] = row['Name'] if row['Name']
+      dig_attributes[:dig_type_id] = DigType.find_or_create_by_name(row['Type'])
+      dig_attributes[:building] = row['Building'] if row['Building']
+      dig_attributes[:sleeps] = row['Sleeps (up to)'] if row['Sleeps (up to)']
+      dig_attributes[:number_of_twin_rooms] = row['Twin'] if row['Twin']
+      dig_attributes[:number_of_double_rooms] = row['Double'] if row['Double']
+      dig_attributes[:number_of_single_rooms] = row['Single'] if row['Single']
+      dig_attributes[:number_of_sofa_beds] = row['Sofa bed'] if row['Sofa bed']
+      dig_attributes[:landlords_notes] = row["Landlord's Notes"] if row["Landlord's Notes"]
+      dig_attributes[:address_1] = row['Address 1'] if row['Address 1']
+      dig_attributes[:address_2] = row['Address 2'] if row['Address 2']
+      dig_attributes[:address_3] = row['Address 3'] if row['Address 3']
+      dig_attributes[:postcode] = row['Postcode'] if row['Postcode']
+      dig_attributes[:landline] = row['Landline'] if row['Landline']
+      dig_attributes[:mobile] = row['Mobile'] if row['Mobile']
+      dig_attributes[:fax] = row['Fax'] if row['Fax']
+      dig_attributes[:remarks] = row['Remarks'] if row['Remarks']
       
       Dig.create!(dig_attributes)
     end

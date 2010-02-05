@@ -2,3 +2,7 @@
   <%= render :partial => 'search_form' %>
 <% end %>
 
+<% @search.results.each do |dig| %>
+  <%= dig.name %><br/>
+<% end %>
+

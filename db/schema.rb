@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20100205125931) do
   create_table "digs", :force => true do |t|
     t.string   "name"
     t.string   "building"
-    t.integer  "sleeps"
+    t.integer  "sleeps",                 :default => 0
     t.integer  "number_of_twin_rooms",   :default => 0
     t.integer  "number_of_double_rooms", :default => 0
     t.integer  "number_of_single_rooms", :default => 0

@@ -4,6 +4,7 @@ class ConvertNullDigNumbersToZeros < ActiveRecord::Migration
     change_column_default :digs, :number_of_double_rooms, 0
     change_column_default :digs, :number_of_single_rooms, 0
     change_column_default :digs, :number_of_sofa_beds, 0
+    change_column_default :digs, :sleeps, 0
   end
 
   def self.down
@@ -11,5 +12,6 @@ class ConvertNullDigNumbersToZeros < ActiveRecord::Migration
     change_column_default :digs, :number_of_double_rooms, nil
     change_column_default :digs, :number_of_single_rooms, nil
     change_column_default :digs, :number_of_sofa_beds, nil
+    change_column_default :digs, :sleeps, nil
   end
 end

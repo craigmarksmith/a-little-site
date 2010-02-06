@@ -1,5 +1,4 @@
 require 'fastercsv'
-require 'pp'
 class HotelsImporter
 
   def self.import(path)

@@ -15,7 +15,7 @@ class Admin::DigTypesController < AdminController
       render :action => "new"
       return
     end
-    
+
     @dig_type.save!
     redirect_to :action => 'index'
   end

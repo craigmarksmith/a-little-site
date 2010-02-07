@@ -10,7 +10,13 @@ class Admin::DigsController < AdminController
   end
 
   def create
-    Dig.create!(params[:dig])
+    @dig = Dig.new(params[:dig])
+    unless @dig.valid?
+      render :action => "new"
+      return
+    end
+    
+    @dig.save!
     redirect_to :action => 'index'
   end
 

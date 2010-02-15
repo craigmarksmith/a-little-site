@@ -34,7 +34,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace :admin do |admin|
     admin.homepage '/', :controller => "home"
-    admin.resources :tours
     admin.resources :theatres
     admin.resources :digs
     admin.resources :users

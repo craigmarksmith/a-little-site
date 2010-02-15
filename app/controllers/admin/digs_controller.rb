@@ -10,6 +10,7 @@ class Admin::DigsController < AdminController
   end
 
   def create
+    params[:dig][:dig_types] = DigType.find([params[:dig][:dig_types]])
     @dig = Dig.new(params[:dig])
     unless @dig.valid?
       render :action => "new"
@@ -25,6 +26,7 @@ class Admin::DigsController < AdminController
   end
 
   def update
+    params[:dig][:dig_types] = DigType.find([params[:dig][:dig_types]])
     Dig.find(params[:id]).update_attributes(params[:dig])
     redirect_to :action => 'index'
   end

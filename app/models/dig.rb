@@ -1,5 +1,5 @@
 class Dig < ActiveRecord::Base
-  belongs_to :dig_type
+  has_and_belongs_to_many :dig_types
   
-  validates_presence_of :name, :dig_type_id
+  validates_presence_of :name
 end

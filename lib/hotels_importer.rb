@@ -7,10 +7,9 @@ class HotelsImporter
     FasterCSV.foreach(path, :headers => :first_row) do |row|
       dig_attributes = {}
       dig_attributes[:name] = row['Name'] if row['Name']
-      dig_attributes[:building] = row['Building'] if row['Building']
       
-      dig_attributes[:living_with_landlord] = row['Living with Landlord'] if row['Living with Landlord']
-      dig_attributes[:self_contained] = row['Self Contained Accom'] if row['Self Contained Accom']
+      # dig_attributes[:living_with_landlord] = row['Living with Landlord'] if row['Living with Landlord']
+      # dig_attributes[:self_contained] = row['Self Contained Accom'] if row['Self Contained Accom']
       
       dig_attributes[:sleeps] = row['Sleeps (up to)'] if row['Sleeps (up to)']
       dig_attributes[:number_of_twin_rooms] = row['Twin'] if row['Twin']
@@ -28,10 +27,6 @@ class HotelsImporter
       dig_attributes[:remarks] = row['Remarks'] if row['Remarks']
       
       dig = Dig.new(dig_attributes)
-      
-      row['Type'].split('||').each do |dig_type_name|
-        dig.dig_types << DigType.find_or_by_name(dig_type_name)
-      end
       
       dig.save!
     end

@@ -37,7 +37,6 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :tours
     admin.resources :theatres
     admin.resources :digs
-    admin.resources :dig_types
     admin.resources :users
   end
 

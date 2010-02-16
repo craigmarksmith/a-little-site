@@ -12,3 +12,12 @@ task :import_theatres => :environment do
     Theatre.create!(theatre_attribute)
   end
 end
+
+task :import_dig_types => :environment do
+  [
+    {:name => 'Living with Landlord'},
+    {:name => 'Self Contained Accom'}
+  ].each do |dig_type_attributes|
+    DigType.create!(dig_type_attributes)
+  end
+end

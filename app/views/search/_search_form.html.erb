@@ -1,21 +1,21 @@
 <% form_tag search_path, :method => :get do %>
-  <%= label_tag :theatre, 'theatre' %>:
+  <%= label_tag :theatre, 'Theatre' %>
   <%= select_tag :theatre_id, options_for_select(Theatre.all.map{|t| [t.name, t.id]}, @search.theatre_id.to_i) %><br />
 
-  <%= label_tag :type, 'Type' %>:
+  <%= label_tag :type, 'Type' %>
   <%= select_tag :dig_type_id, options_for_select([['Show all','']]+DigType.all.map{|dt| [dt.name, dt.id]}, @search.dig_type_id.to_i) %><br />
 
-  <%= label_tag :number_of_sofa_beds, 'Number of sofa beds' %>:
+  <%= label_tag :number_of_sofa_beds, 'Sofa beds' %>
   <%= select_tag :number_of_sofa_beds, options_for_select((0..10).map{|i| i }, @search.number_of_sofa_beds.to_i) %><br />
 
-  <%= label_tag :number_of_single_rooms, 'Number of single rooms' %>:
+  <%= label_tag :number_of_single_rooms, 'Single rooms' %>
   <%= select_tag :number_of_single_rooms, options_for_select((0..10).map{|i| i }, @search.number_of_single_rooms.to_i) %><br />
 
-  <%= label_tag :number_of_twin_rooms, 'Number of twin rooms' %>:
+  <%= label_tag :number_of_twin_rooms, 'Twin rooms' %>
   <%= select_tag :number_of_twin_rooms, options_for_select((0..10).map{|i| i }, @search.number_of_twin_rooms.to_i) %><br />
 
-  <%= label_tag :number_of_double_rooms, 'Number of double rooms' %>:
+  <%= label_tag :number_of_double_rooms, 'Double rooms' %>
   <%= select_tag :number_of_double_rooms, options_for_select((0..10).map{|i| i }, @search.number_of_double_rooms.to_i) %><br />
 
-  <%= submit_tag("Find digs") %>
+  <%= submit_tag("Find digs", :id => 'search-button') %>
 <% end %>

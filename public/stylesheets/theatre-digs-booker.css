@@ -1,0 +1,18 @@
+#sidebar {
+  font-size:13px;
+  float: left;
+}
+
+#sidebar label {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+}
+
+#sidebar #search-button {
+  margin-left:188px;
+}
+
+#content {
+  margin-left:300px;
+}

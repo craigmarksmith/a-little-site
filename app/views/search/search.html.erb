@@ -2,7 +2,12 @@
   <%= render :partial => 'search_form' %>
 <% end %>
 
-<% @search.results.each do |dig| %>
-  <%= dig.name %><br/>
+<% unless @search.results.empty? %>
+  <ul>
+  <% @search.results.each do |dig| %>
+    <li id="dig-<%= dig.id %>"><%= render :partial => 'lozenge', :locals => {:dig => dig} %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>Sorry, no digs matched your search criteria</p>
 <% end %>
-

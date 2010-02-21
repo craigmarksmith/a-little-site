@@ -12,7 +12,7 @@ class Search
 
   def results
     dig_conditions = []
-    dig_conditions << "dig_types.id = :dig_type_id" if !dig_type_id.empty?
+    dig_conditions << "dig_types.id = :dig_type_id" if dig_type_id && !dig_type_id.empty?
     dig_conditions << "number_of_sofa_beds >= :number_of_sofa_beds" if number_of_sofa_beds
     dig_conditions << "number_of_single_rooms >= :number_of_single_rooms" if number_of_single_rooms
     dig_conditions << "number_of_twin_rooms >= :number_of_twin_rooms" if number_of_twin_rooms

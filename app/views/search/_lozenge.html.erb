@@ -3,3 +3,4 @@
 <p class="number_of_sofa_beds"><%= dig.number_of_sofa_beds %></p>
 <p class="number_of_single_rooms"><%= dig.number_of_single_rooms %></p>
 <p class="number_of_twin_rooms"><%= dig.number_of_twin_rooms %></p>
+<p class="distance"><%= dig.theatre_distances.scoped(:conditions => ["theatre_id = ?", @theatre.id]).first.try(:distance) %></p>

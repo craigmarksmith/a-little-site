@@ -19,3 +19,6 @@ end
 Factory.define :theatre do |t|
   t.name{ Factory.next :theatre_name }
 end
+
+Factory.define :theatre_distance do
+end

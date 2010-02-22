@@ -13,7 +13,7 @@ class HotelsImporter
         if dig.valid?
           dig.save!
         else
-          p dig.errors
+          p dig.errors.full_messages
           p "On line #{csv.lineno}"
           next
         end

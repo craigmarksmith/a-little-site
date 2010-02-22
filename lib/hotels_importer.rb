@@ -23,11 +23,19 @@ class HotelsImporter
       dig_attributes[:remarks] = row['Remarks'] if row['Remarks']
 
       dig = Dig.new(dig_attributes)
-      
+
       dig.dig_types << DigType.find_by_name('Living with Landlord') if row['Living with Landlord'] == '1'
       dig.dig_types << DigType.find_by_name('Self Contained Accom') if row['Self Contained Accom'] == '1'
 
       dig.save!
+
+      {
+        'Walking Distance (miles) from Kings Theatre EH3 9LQ' => Theatre.find_by_name('Kings Theatre'),
+        'Walking Distance  (miles) from Playhouse Theatre      EH1 3AA' => Theatre.find_by_name('Playhouse Theatre'),
+        'Walking Distance (miles) from Festival Theatre EH8 9FT' => Theatre.find_by_name('Festival Theatre')
+      }.each do |column_name, theatre|
+        TheatreDistance.create!(:distance => row[column_name].to_f, :theatre_id => theatre.id, :dig_id => dig.id) if row[column_name]
+      end
     end
   end
 

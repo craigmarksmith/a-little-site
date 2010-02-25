@@ -16,14 +16,28 @@ class SearchControllerTest < ActionController::TestCase
   end
 
   context "when a theatre hasn't been chosen" do
-    should "ask them to choose one"
+    setup do
+      get :search, basic_search_params(:theatre_id => nil)
+    end
+
+    should "ask them to choose one" do
+      assert_select "#sidebar .error", :text => 'Please select a theatre'
+    end
+
+    should "show no search result" do
+      assert_select "#content ul li", :count => 0
+    end
   end
 
   context "when there are search results" do
     setup do
       @dig = Factory(:dig, :name => "Dave's mega place", :number_of_double_rooms => 2)
-      @dig.dig_types << Factory(:dig_type)
-      @dig.save!
+      @dig_2 = Factory(:dig, :name => "No places", :number_of_double_rooms => 2)
+
+      dig_type = Factory(:dig_type)
+
+      @dig.dig_types << dig_type
+      @dig_2.dig_types << dig_type
 
       Factory(:theatre_distance, :dig => @dig, :theatre => @theatre_1, :distance => 0.4 )
 
@@ -47,6 +61,10 @@ class SearchControllerTest < ActionController::TestCase
       assert_select "ul li#dig-#{@dig.id}" do
         assert_select ".distance", "0.4"
       end
+    end
+
+    should "not show digs that are not related to the chosen theatres" do
+      assert_select "ul li#dig-#{@dig_2.id}", :count => 0
     end
   end
 

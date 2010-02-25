@@ -1,3 +1,7 @@
+body {
+  font-family:arial,sans-serif;
+}
+
 #sidebar {
   font-size:13px;
   float: left;
@@ -15,4 +19,10 @@
 
 #content {
   margin-left:300px;
+}
+
+.error {
+  color:red;
+  margin-left:114px;
+  font-size:11px;
 }

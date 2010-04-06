@@ -38,6 +38,30 @@ html {
 
 #footer {
   clear:left;
+  background-color:#000;
+  text-align:center;
+  padding:20px;
+}
+
+.contact-details {
+  color:#91928E;
+}
+
+.tel {
+  margin-right:10px;
+}
+
+.tel,
+.email,
+.contact-details a {
+  color:#FFF;
+  text-decoration:none;
+}
+
+.contact-details {
+  padding:20px;
+  border:1px solid #575757;
+  font-size:12px
 }
 
 .error {
@@ -45,3 +69,12 @@ html {
   margin-left:114px;
   font-size:11px;
 }
+
+.hidden {
+  display:none;
+}
+
+.lozenge {
+  border:1px solid red;
+}
+

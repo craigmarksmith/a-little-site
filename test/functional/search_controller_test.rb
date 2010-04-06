@@ -31,9 +31,9 @@ class SearchControllerTest < ActionController::TestCase
 
   context "when there are search results" do
     setup do
-      @dig_1 = Factory(:dig, :name => "Dave's mega place", :number_of_double_rooms => 2)
-      @dig_2 = Factory(:dig, :name => "No places", :number_of_double_rooms => 2)
-      @dig_3 = Factory(:dig, :name => "Pretty far", :number_of_double_rooms => 2)
+      @dig_1 = Factory(:dig, :name => "Dave's mega place", :number_of_double_rooms => 2, :price_per_week_from => 1200)
+      @dig_2 = Factory(:dig, :name => "No places", :number_of_double_rooms => 2, :price_per_week_from => 900)
+      @dig_3 = Factory(:dig, :name => "Pretty far", :number_of_double_rooms => 2, :price_per_week_from => 1000)
 
       dig_type = Factory(:dig_type)
 
@@ -53,6 +53,12 @@ class SearchControllerTest < ActionController::TestCase
         assert_select ".number_of_single_rooms", '0'
         assert_select ".number_of_twin_rooms", '0'
         assert_select ".number_of_double_rooms", '2'
+      end
+    end
+
+    should "show the price per week" do
+      assert_select "ul li#dig-#{@dig_1.id}" do
+        assert_select ".price-per-week", '£12'
       end
     end
 

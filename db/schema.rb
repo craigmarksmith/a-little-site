@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100221192255) do
+ActiveRecord::Schema.define(:version => 20100406202541) do
 
   create_table "dig_types", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20100221192255) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "dig_type_id"
+    t.integer  "price_per_week_from"
   end
 
   create_table "theatre_distances", :force => true do |t|

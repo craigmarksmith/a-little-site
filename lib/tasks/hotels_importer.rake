@@ -1,6 +1,6 @@
 desc "Import stuff"
 task :import_hotels => :environment do
-  HotelsImporter.import('/Users/craigmarksmith/Desktop/Edinburgh_Digs_Sheet.csv')
+  HotelsImporter.import('/Users/craigmarksmith/Desktop/phil/Edinburgh_Digs_Sheet.csv')
 end
 
 task :import_theatres => :environment do

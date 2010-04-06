@@ -3,6 +3,8 @@ class HotelsImporter
 
   def self.import(path)
     Dig.delete_all
+    TheatreDistance.delete_all
+
     FasterCSV.open(path, :headers => :first_row) do |csv|
       csv.each do |row|
         dig = Dig.new(dig_attributes(row))
@@ -46,6 +48,7 @@ class HotelsImporter
     dig_attributes[:mobile] = row['Mobile'] if row['Mobile']
     dig_attributes[:fax] = row['Fax'] if row['Fax']
     dig_attributes[:remarks] = row['Remarks'] if row['Remarks']
+    dig_attributes[:price_per_week_from] = (row['Price Per Week         (7 nights)FROM      £'].sub('£','').to_f * 100).to_i if row['Price Per Week         (7 nights)FROM      £']
 
     dig_attributes
   end

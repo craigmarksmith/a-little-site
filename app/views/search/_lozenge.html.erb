@@ -1,5 +1,6 @@
-<p class="number_of_double_rooms"><%= dig.number_of_double_rooms %></p>
-<p class="number_of_sofa_beds"><%= dig.number_of_sofa_beds %></p>
-<p class="number_of_single_rooms"><%= dig.number_of_single_rooms %></p>
-<p class="number_of_twin_rooms"><%= dig.number_of_twin_rooms %></p>
-<p class="distance"><%= dig.theatre_distances.scoped(:conditions => ["theatre_id = ?", params[:theatre_id]]).first.try(:distance) %></p>
+<span class="number_of_double_rooms"><%= dig.number_of_double_rooms %></span>
+<span class="number_of_sofa_beds"><%= dig.number_of_sofa_beds %></span>
+<span class="number_of_single_rooms"><%= dig.number_of_single_rooms %></span>
+<span class="number_of_twin_rooms"><%= dig.number_of_twin_rooms %></span>
+<span class="distance"><%= dig.theatre_distances.scoped(:conditions => ["theatre_id = ?", params[:theatre_id]]).first.try(:distance) %></span>
+<span class="price-per-week"><%= number_to_currency(dig.price_per_week_from.to_i/100, {:unit => '£', :precision => 0}) %></span>

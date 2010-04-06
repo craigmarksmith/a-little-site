@@ -47,10 +47,6 @@ class SearchControllerTest < ActionController::TestCase
       get :search, basic_search_params(:theatre_id => @theatre_1.id)
     end
 
-    should "show each name" do
-      assert_select "ul li#dig-#{@dig_1.id} .name", "Dave's mega place"
-    end
-
     should "show number of beds" do
       assert_select "ul li#dig-#{@dig_1.id}" do
         assert_select ".number_of_sofa_beds", '0'

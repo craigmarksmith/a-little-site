@@ -1,5 +1,20 @@
-body {
+html {
   font-family:arial,sans-serif;
+  background-color:#464233;
+}
+
+#page {
+  width:911px;
+  margin:0 auto;
+}
+
+#header img {
+  display:block;
+  margin:auto;
+}
+
+#container {
+  background-color:#FFF;
 }
 
 #sidebar {
@@ -19,6 +34,10 @@ body {
 
 #content {
   margin-left:300px;
+}
+
+#footer {
+  clear:left;
 }
 
 .error {

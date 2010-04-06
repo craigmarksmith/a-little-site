@@ -6,14 +6,21 @@
     <%= stylesheet_link_tag "theatre-digs-booker" %>
   </head>
   <body>
-    <div id="header">
-      <img src="/images/logo.png" id="logo" />
-    </div>
-    <div id="sidebar">
-      <%= yield :sidebar %>
-    </div>
-    <div id="content">
-      <%= yield %>
+    <div id="page">
+      <div id="header">
+        <img src="/images/logo.png" alt="Theatre Digs Booker" title="Theatre Digs Booker"/>
+      </div>
+      <div id="container">
+        <div id="sidebar">
+          <%= yield :sidebar %>
+        </div>
+        <div id="content">
+          <%= yield %>
+        </div>
+        <div id="footer">
+          some footer stuff
+        </div>
+      </div>
     </div>
   </body>
 </html>

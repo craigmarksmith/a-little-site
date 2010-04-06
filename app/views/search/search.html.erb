@@ -5,7 +5,7 @@
 <% unless @search.results.empty? %>
   <ul>
   <% @search.results.each do |dig| %>
-    <li id="dig-<%= dig.id %>"><%= render :partial => 'lozenge', :locals => {:dig => dig} %></li>
+    <li class="lozenge" id="dig-<%= dig.id %>"><%= render :partial => 'lozenge', :locals => {:dig => dig} %></li>
   <% end %>
   </ul>
 <% else %>

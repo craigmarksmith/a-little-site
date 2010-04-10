@@ -10,6 +10,8 @@ class SearchController < ApplicationController
       render :action => 'new'
       return
     end
+
+    @theatre = Theatre.find(params[:theatre_id])
   end
 
 end

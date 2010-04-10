@@ -82,7 +82,27 @@ html {
   font-size:10px;
 }
 
-.lozenge .price-per-week {
-  font-size:30px;
+.lozenge div {
+  margin-bottom:8px;
+}
+
+.lozenge .dig-type {
+  float:right;
+}
+
+.lozenge ul.dig-details li {
+  display:inline-block;
+  text-align:center;
+  margin:3px;
+}
+
+.lozenge ul.dig-details span {
+  display:block;
+  font-size:20px;
+}
+
+.lozenge .price-per-week,
+.lozenge .distance {
+  font-size:20px;
 }
 

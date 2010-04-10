@@ -35,7 +35,7 @@ class SearchControllerTest < ActionController::TestCase
       @dig_2 = Factory(:dig, :name => "No places", :number_of_double_rooms => 2, :price_per_week_from => 900)
       @dig_3 = Factory(:dig, :name => "Pretty far", :number_of_double_rooms => 2, :price_per_week_from => 1000)
 
-      dig_type = Factory(:dig_type)
+      dig_type = Factory(:dig_type, :name => 'Living with Landlord')
 
       @dig_1.dig_types << dig_type
       @dig_2.dig_types << dig_type
@@ -53,6 +53,12 @@ class SearchControllerTest < ActionController::TestCase
         assert_select ".number_of_single_rooms", '0'
         assert_select ".number_of_twin_rooms", '0'
         assert_select ".number_of_double_rooms", '2'
+      end
+    end
+
+    should "show the dig type" do
+      assert_select "ul li#dig-#{@dig_1.id}" do
+        assert_select ".dig-type", 'Living with Landlord'
       end
     end
 

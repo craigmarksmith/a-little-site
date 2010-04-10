@@ -1,9 +1,12 @@
+<span class='dig-type'><%= dig.dig_types.first.name %></span>
 <div>from <span class="price-per-week"><%= number_to_currency(dig.price_per_week_from.to_i/100, {:unit => '£', :precision => 0}) %></span> per week</div>
-<span class="distance"><%= dig.theatre_distances.scoped(:conditions => ["theatre_id = ?", params[:theatre_id]]).first.try(:distance) %></span>
-<ul>
-  <li>Sleeps up to <span class="sleeps"><%= dig.sleeps %></span></li>
+<div>
+  <span class="distance"><%= dig.theatre_distances.scoped(:conditions => ["theatre_id = ?", params[:theatre_id]]).first.try(:distance) %></span> miles from the <%= @theatre.name %>
+</div>
+<ul class="dig-details">
   <li>Number of double rooms <span class="number_of_double_rooms"><%= dig.number_of_double_rooms %></span></li>
   <li>Number of sofa beds<span class="number_of_sofa_beds"><%= dig.number_of_sofa_beds %></span></li>
   <li>Number of single rooms<span class="number_of_single_rooms"><%= dig.number_of_single_rooms %></span></li>
   <li>Number of twin rooms<span class="number_of_twin_rooms"><%= dig.number_of_twin_rooms %></span></li>
+  <li>Sleeps up to <span class="sleeps"><%= dig.sleeps %></span></li>
 </ul>

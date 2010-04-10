@@ -15,7 +15,7 @@ class Admin::DigsController < AdminController
       render :action => "new"
       return
     end
-    
+
     @dig.save!
     redirect_to :action => 'index'
   end
@@ -26,6 +26,12 @@ class Admin::DigsController < AdminController
 
   def update
     Dig.find(params[:id]).update_attributes(params[:dig])
+    redirect_to :action => 'index'
+  end
+
+  def upload_dig_sheet
+    file = params[:upload]['datafile']
+    HotelsImporter.import(file.path)
     redirect_to :action => 'index'
   end
 

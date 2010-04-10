@@ -1,0 +1,4 @@
+<% form_tag({:action => 'upload_dig_sheet'}, :multipart => true) do %>
+  <%= file_field 'upload', 'datafile' %>
+  <%= submit_tag "Upload" %>
+<% end %>

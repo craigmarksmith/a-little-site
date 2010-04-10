@@ -3,7 +3,8 @@ require 'test_helper'
 class TourControllerTest < ActionController::TestCase
 
   def setup
-    @tour = Factory(:tour, :code => 'ABC124')
+    @tour = Factory(:tour, :name => 'Test Tour')
+    @tour.update_attribute(:code,'ABC124')
     @dig = Factory(:dig)
   end
 

@@ -22,3 +22,7 @@ end
 
 Factory.define :theatre_distance do
 end
+
+Factory.define :tour do
+end
+

@@ -32,6 +32,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :user_sessions
   map.search '/search', :controller => 'search', :action => 'search'
 
+  map.resources :digs
+  map.tour_code_entry 'your-tour', :controller => 'tour', :action => 'enter_code'
+  map.tour_authorise 'tour-auth', :controller => 'tour', :action => 'authorise'
+
   map.namespace :admin do |admin|
     admin.homepage '/', :controller => "home"
     admin.resources :theatres

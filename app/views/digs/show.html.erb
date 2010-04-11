@@ -1,7 +1,7 @@
 <h1 id="name"><%= @dig.name %></h1>
-<p class="price-per-week-from"><%= price_per_week_from(@dig) %></p>
+<p>from <span class="price-per-week-from"><%= price_per_week_from(@dig) %></span> per week</p>
 
-<span class='dig-type'><%= @dig.dig_types.first.name %></span>
+<p><span class='dig-type'><%= @dig.dig_types.first.name %></span></p>
 
 <%= render :partial => 'shared/dig_details', :locals => {:dig => @dig} %>
 

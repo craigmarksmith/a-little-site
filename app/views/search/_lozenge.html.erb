@@ -1,5 +1,5 @@
 <span class='dig-type'><%= dig.dig_types.first.name %></span>
-<div>from <span class="price-per-week"><%= number_to_currency(dig.price_per_week_from.to_i/100, {:unit => '£', :precision => 0}) %></span> per week</div>
+<div>from <span class="price-per-week"><%= price_per_week_from(dig) %></span> per week</div>
 <div>
   <span class="distance"><%= dig.theatre_distances.scoped(:conditions => ["theatre_id = ?", params[:theatre_id]]).first.try(:distance) %></span> miles from the <%= @theatre.name %>
 </div>

@@ -1,3 +1,13 @@
 <h1 id="name"><%= @dig.name %></h1>
 <p class="price-per-week-from"><%= price_per_week_from(@dig) %></p>
 <%= render :partial => 'shared/dig_details', :locals => {:dig => @dig} %>
+
+<div id="address">
+  <%= address_line(@dig.address_1) %>
+  <%= address_line(@dig.address_2) %>
+  <%= address_line(@dig.address_3) %>
+  <%= address_line(@dig.postcode) %>
+  <%= address_line(@dig.landline) %>
+  <%= address_line(@dig.mobile) %>
+  <%= address_line(@dig.fax) %>
+</div>

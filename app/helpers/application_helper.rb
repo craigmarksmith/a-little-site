@@ -8,4 +8,8 @@ module ApplicationHelper
   def price_per_week_from(dig)
     number_to_currency(dig.price_per_week_from.to_i/100, {:unit => '£', :precision => 0})
   end
+
+  def address_line(data)
+    "<span>#{data}</span><br/>" if data
+  end
 end

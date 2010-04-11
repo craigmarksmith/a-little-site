@@ -1,6 +1,6 @@
 class Search
 
-  ATTRIBUTES = [:theatre_id, :dig_type_id, :number_of_sofa_beds, :number_of_single_rooms, :number_of_twin_rooms, :number_of_double_rooms]
+  ATTRIBUTES = [:theatre_id, :dig_type_id, :number_of_sofa_beds, :number_of_single_rooms, :number_of_twin_rooms, :number_of_double_rooms, :price_range_from, :price_range_to]
   attr_accessor *ATTRIBUTES
 
   def initialize(params = {})
@@ -20,6 +20,8 @@ class Search
     dig_conditions << "number_of_single_rooms >= :number_of_single_rooms" if number_of_single_rooms
     dig_conditions << "number_of_twin_rooms >= :number_of_twin_rooms" if number_of_twin_rooms
     dig_conditions << "number_of_double_rooms >= :number_of_double_rooms" if number_of_double_rooms
+    dig_conditions << "price_per_week_from >= :price_range_from" if price_range_from
+    dig_conditions << "price_per_week_from <= :price_range_to" if price_range_to
 
     Dig.find(:all, :joins => [:dig_types, :theatres], :conditions => [dig_conditions.join(' AND '),  attributes], :order => 'theatre_distances.distance ASC')
   end

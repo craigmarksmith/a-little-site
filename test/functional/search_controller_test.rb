@@ -12,6 +12,9 @@ class SearchControllerTest < ActionController::TestCase
   end
 
   def setup
+    Factory(:dig, :price_per_week_from => 3000)
+    Factory(:dig, :price_per_week_from => 4000)
+    Factory(:dig, :price_per_week_from => 5000)
     @theatre_1 = Factory(:theatre, :name => "The old vic")
   end
 

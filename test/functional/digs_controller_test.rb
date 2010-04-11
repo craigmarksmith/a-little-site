@@ -4,6 +4,7 @@ class DigsControllerTest < ActionController::TestCase
 
   def setup
     @dig = Factory(:dig, :name => 'Daves place')
+    @dig.dig_types << Factory(:dig_type, :name => 'Living with Landlord')
   end
 
   context "when the user hasn't entered a tour id" do

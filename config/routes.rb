@@ -36,6 +36,8 @@ ActionController::Routing::Routes.draw do |map|
   map.tour_code_entry 'your-tour', :controller => 'tour', :action => 'enter_code'
   map.tour_authorise 'tour-auth', :controller => 'tour', :action => 'authorise'
 
+  map.faq 'faq', :controller => 'static', :action => 'faq'
+
   map.namespace :admin do |admin|
     admin.homepage '/', :controller => "home"
     admin.resources :theatres

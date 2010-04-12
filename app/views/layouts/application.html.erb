@@ -17,13 +17,7 @@
         <div id="content">
           <%= yield %>
         </div>
-        <div id="footer">
-          <div class='contact-details general vcard'>
-            <span class="hidden fn org">theatredigsbooker</span>
-            Tel: <span class="tel">(+44) (0) 208 144 5372</span>
-            Email: <a class="email" href="mailto:info@theatredigsbooker.com">info@theatredigsbooker.com</a>
-          </div>
-        </div>
+        <%= render :partial => 'shared/footer' %>
       </div>
     </div>
   </body>

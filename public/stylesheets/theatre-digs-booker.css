@@ -3,6 +3,10 @@ html {
   background-color:#464233;
 }
 
+strong {
+  font-weight:bold;
+}
+
 h1 {
   padding-bottom:10px;
   padding-top:15px;
@@ -140,5 +144,11 @@ li {
 
 ul.faq-questions {
   margin-bottom:20px;
+}
+
+#ask-more-questions {
+  float:right;
+  text-align:right;
+  font-size:10px;
 }
 

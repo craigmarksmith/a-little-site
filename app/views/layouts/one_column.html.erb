@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>Theatre Digs Booker</title>
+    <%= stylesheet_link_tag "reset-min" %>
+    <%= stylesheet_link_tag "theatre-digs-booker" %>
+  </head>
+  <body>
+    <div id="page">
+      <div id="header">
+        <a href="/"><img src="/images/logo.png" alt="Theatre Digs Booker" title="Theatre Digs Booker"/></a>
+      </div>
+      <div id="container">
+        <div id="one-column-content">
+          <%= yield %>
+        </div>
+        <%= render :partial => 'shared/footer' %>
+      </div>
+    </div>
+  </body>
+</html>

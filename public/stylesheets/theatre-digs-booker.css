@@ -109,31 +109,40 @@ h1 {
   margin-bottom:5px;
   margin-right:5px;
   border-bottom:1px solid #91928E;
-  font-size:10px;
+  font-size:16px;
+  height:150px;
+}
+
+.lozenge .loz-left,
+.lozenge .loz-right {
+  float:left;
+}
+
+.lozenge .loz-left {
+  padding-right:15px;
 }
 
 .lozenge div {
-  margin-bottom:8px;
+  margin-bottom:3px;
 }
 
-.lozenge .dig-type {
-  float:right;
+.lozenge ul.dig-details {
+  padding-bottom:16px;
 }
 
 .lozenge ul.dig-details li {
-  display:inline-block;
-  text-align:center;
+  text-align:left;
   margin:3px;
 }
 
 .lozenge ul.dig-details span {
-  display:block;
-  font-size:20px;
+  font-weight:bold;
+  padding-right:5px;
 }
 
 .lozenge .price-per-week,
 .lozenge .distance {
-  font-size:20px;
+  font-weight:bold;
 }
 
 #faq li {

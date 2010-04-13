@@ -1,8 +1,11 @@
-<span class='dig-type'><%= dig.dig_types.first.name %></span>
-<div>from <span class="price-per-week"><%= price_per_week_from(dig) %></span> per week</div>
-<div>
-  <span class="distance"><%= dig.theatre_distances.scoped(:conditions => ["theatre_id = ?", params[:theatre_id]]).first.try(:distance) %></span> miles from the <%= @theatre.name %>
+<div class='loz-left'>
+  <%= image_tag "/images/image-coming-soon.png" %>
+  <div>From <span class="price-per-week"><%= price_per_week_from(dig) %></span> per week</div>
+  <div>
+    <span class="distance"><%= dig.theatre_distances.scoped(:conditions => ["theatre_id = ?", params[:theatre_id]]).first.try(:distance) %></span> miles from the <%= @theatre.name %>
+  </div>
 </div>
-<%= render :partial => 'shared/dig_details', :locals => {:dig => dig} %>
-
-<%= link_to "Show full details", dig_path(dig) %>
+<div class='loz-right'>
+  <%= render :partial => 'shared/dig_details', :locals => {:dig => dig} %>
+  <%= link_to "Show full details", dig_path(dig), :class => 'show-details' %>
+</div>

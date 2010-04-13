@@ -59,18 +59,6 @@ class SearchControllerTest < ActionController::TestCase
       end
     end
 
-    should "show the dig type" do
-      assert_select "ul li#dig-#{@dig_1.id}" do
-        assert_select ".dig-type", 'Living with Landlord'
-      end
-    end
-
-    should "show the number of people the dig sleeps" do
-      assert_select "ul li#dig-#{@dig_1.id}" do
-        assert_select ".sleeps", '4'
-      end
-    end
-
     should "show the price per week" do
       assert_select "ul li#dig-#{@dig_1.id}" do
         assert_select ".price-per-week", '£12'

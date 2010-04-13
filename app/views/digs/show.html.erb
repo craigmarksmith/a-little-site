@@ -1,9 +1,13 @@
 <h1 id="name"><%= @dig.name %></h1>
-<p>from <span class="price-per-week-from"><%= price_per_week_from(@dig) %></span> per week</p>
-
-<p><span class='dig-type'><%= @dig.dig_types.first.name %></span></p>
-
+<div class="image-price-distance">
+  <%= image_tag "/images/image-coming-soon.png" %>
+  <p>from <span class="price-per-week-from"><%= price_per_week_from(@dig) %></span> per week</p>
+  <p><span class='dig-type'><%= @dig.dig_types.first.name %></span></p>
+</div>
+<div class="dig-details">
 <%= render :partial => 'shared/dig_details', :locals => {:dig => @dig} %>
+<%= @dig.landlords_notes %>
+</div>
 
 <div id="address">
   <%= address_line(@dig.address_1) %>

@@ -114,8 +114,14 @@ h1 {
 }
 
 .lozenge .loz-left,
-.lozenge .loz-right {
+.lozenge .loz-right,
+.image-price-distance,
+.dig-details {
   float:left;
+}
+
+#address {
+  clear:both;
 }
 
 .lozenge .loz-left {

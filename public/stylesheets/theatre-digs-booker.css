@@ -13,12 +13,6 @@ h1 {
   font-weight:bold;
 }
 
-li {
-  background-image:url('/images/bullet.png');
-  background-repeat:no-repeat;
-  padding-left:25px;
-}
-
 #page {
   width:911px;
   margin:0 auto;
@@ -140,6 +134,12 @@ li {
 .lozenge .price-per-week,
 .lozenge .distance {
   font-size:20px;
+}
+
+#faq li {
+  background-image:url('/images/bullet.png');
+  background-repeat:no-repeat;
+  padding-left:25px;
 }
 
 ul.faq-questions {

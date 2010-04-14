@@ -5,7 +5,7 @@
   <p><span class='dig-type'><%= @dig.dig_types.first.name %></span></p>
 </div>
 <div class="dig-details">
-<%= render :partial => 'shared/dig_details', :locals => {:dig => @dig} %>
+<%= render :partial => 'shared/dig_details', :locals => {:dig => @dig} %><br/>
 <%= @dig.landlords_notes %>
 </div>
 

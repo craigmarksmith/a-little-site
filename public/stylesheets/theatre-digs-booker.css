@@ -116,7 +116,7 @@ h1 {
 .lozenge .loz-left,
 .lozenge .loz-right,
 .image-price-distance,
-.dig-details {
+div.dig-details {
   float:left;
 }
 

@@ -32,6 +32,8 @@ class HotelsImporter
   end
 
   def self.dig_attributes(row)
+    landlords_notes = "Landlord's Notes                                           whb=wash hand basin, ph=phone, fx=fax, wc=loo, wm=washing machine, mw=microwave, ff=fridgefreezer, dw=dishwasher "
+    
     dig_attributes = {}
     dig_attributes[:name] = row['Name'] if row['Name']
     dig_attributes[:sleeps] = row['Sleeps (up to)'] if row['Sleeps (up to)']
@@ -39,7 +41,7 @@ class HotelsImporter
     dig_attributes[:number_of_double_rooms] = row['Double'] if row['Double']
     dig_attributes[:number_of_single_rooms] = row['Single'] if row['Single']
     dig_attributes[:number_of_sofa_beds] = row['Sofa bed'] if row['Sofa bed']
-    dig_attributes[:landlords_notes] = row["Landlord's Notes"] if row["Landlord's Notes"]
+    dig_attributes[:landlords_notes] = row[landlords_notes] if row[landlords_notes]
     dig_attributes[:address_1] = row['Address 1'] if row['Address 1']
     dig_attributes[:address_2] = row['Address 2'] if row['Address 2']
     dig_attributes[:address_3] = row['Address 3'] if row['Address 3']

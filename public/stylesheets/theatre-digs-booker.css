@@ -78,10 +78,14 @@ h1, h2 {
   padding:20px;
 }
 
+ul.footer-menu {
+  background-color:#464233;
+  text-align:center;
+}
+
 .footer-menu li {
   font-size:10px;
-  text-align:center;
-  background-color:#464233;
+  display:inline;
 }
 
 .footer-menu li a {

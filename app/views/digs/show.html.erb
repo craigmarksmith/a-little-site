@@ -1,20 +1,23 @@
-<h1 id="name"><%= @dig.name %></h1>
-<div class="image-price-distance">
-  <%= image_tag "/images/image-coming-soon.png" %>
-  <p>from <span class="price-per-week-from"><%= price_per_week_from(@dig) %></span> per week</p>
-  <p><span class='dig-type'><%= @dig.dig_types.first.name %></span></p>
-</div>
-<div class="dig-details">
-<%= render :partial => 'shared/dig_details', :locals => {:dig => @dig} %><br/>
-<%= @dig.landlords_notes %>
-</div>
+<div id='dig'>
+  <h1 id="name"><%= @dig.name %></h1>
+  <div class="section">
+    <%= image_tag "/images/image-coming-soon.png" %>
+    <p>from <strong class="price-per-week-from"><%= price_per_week_from(@dig) %></strong> per week</p>
+    <p><span class='dig-type'><%= @dig.dig_types.first.name %></span></p>
+  </div>
+  <div class="section">
+    <%= render :partial => 'shared/dig_details', :locals => {:dig => @dig} %><br/>
+    <%= @dig.landlords_notes %>
+  </div>
 
-<div id="address">
-  <%= address_line(@dig.address_1) %>
-  <%= address_line(@dig.address_2) %>
-  <%= address_line(@dig.address_3) %>
-  <%= address_line(@dig.postcode) %>
-  <%= address_line(@dig.landline) %>
-  <%= address_line(@dig.mobile) %>
-  <%= address_line(@dig.fax) %>
+  <fieldset id="address">
+    <legend>Contact Details:</legend>
+    <%= address_line(@dig.address_1, 'Address') %>
+    <%= address_line(@dig.address_2) %>
+    <%= address_line(@dig.address_3) %>
+    <%= address_line(@dig.postcode, 'Postcode') %>
+    <%= address_line(@dig.landline, 'Landline') %>
+    <%= address_line(@dig.mobile, 'Mobile') %>
+    <%= address_line(@dig.fax, 'Fax') %>
+  </fieldset>
 </div>

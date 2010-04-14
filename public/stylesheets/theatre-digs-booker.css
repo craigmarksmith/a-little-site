@@ -135,8 +135,17 @@ div.dig-details {
   float:left;
 }
 
+.section {
+  float:left;
+  padding:20px;
+}
+
 #address {
   clear:both;
+  border: 2px solid #91928E;
+  padding:10px;
+  width:785px;
+  margin: 0 auto;
 }
 
 .lozenge .loz-left {
@@ -183,3 +192,16 @@ div.dig-details {
   font-size:10px;
 }
 
+#dig h1 {
+  text-align:center;
+}
+
+.address-label {
+  display:inline-block;
+  width:100px;
+}
+
+.address-label,
+.address-info {
+  padding-bottom:3px;
+}

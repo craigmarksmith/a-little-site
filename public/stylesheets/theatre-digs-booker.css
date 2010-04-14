@@ -78,6 +78,16 @@ h1, h2 {
   padding:20px;
 }
 
+.footer-menu li {
+  font-size:10px;
+  text-align:center;
+  background-color:#464233;
+}
+
+.footer-menu li a {
+  color:#000;
+}
+
 .contact-details {
   color:#91928E;
 }

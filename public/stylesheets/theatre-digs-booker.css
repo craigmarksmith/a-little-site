@@ -32,6 +32,17 @@ h1, h2 {
   background-color:#FFF;
 }
 
+#search-form {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color:#000;
+  margin:5px;
+  margin-left:16px;
+  padding:10px 5px;
+  border: 1px solid #575757;
+}
+
 #sidebar {
   font-size:13px;
   float: left;

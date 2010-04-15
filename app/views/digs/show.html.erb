@@ -22,9 +22,13 @@
       <%= address_line(@dig.fax, 'Fax') %>
     <% else %>
       <% form_tag authorise_digs_path(:dig_id => @dig.id), :class => 'tour-form' do %>
+        <h3>Requires a tour code</h3>
+        <p>Sorry. We can’t show these details unless you have a tour code.</p>
+        <br/>
         <%= content_tag(:p, @error, :class => 'error') if @error %>
-        <%= label_tag :tour_code, "Your tour code:" %><%= text_field_tag :tour_code %>
+        <%= label_tag :tour_code, "Please enter your tour code:" %><%= text_field_tag :tour_code, nil, :placeholder => 'Tour code' %>
         <%= submit_tag "Done" %>
+        <%= link_to 'What is a tour code?', '/faq#what-is-the-tour-code', :class => 'what-is-a-tour-code' %>
       <% end %>
     <% end %>
   </fieldset>

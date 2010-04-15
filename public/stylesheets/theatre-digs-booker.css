@@ -7,7 +7,7 @@ strong {
   font-weight:bold;
 }
 
-h1, h2 {
+h1, h2, h3 {
   padding-bottom:10px;
   padding-top:15px;
   font-weight:bold;
@@ -61,7 +61,8 @@ h1, h2 {
   padding:0;
 }
 
-#why-edinburgh a {
+#why-edinburgh a,
+.what-is-a-tour-code {
   font-size:10px;
 }
 
@@ -220,4 +221,8 @@ div.dig-details {
 .address-label,
 .address-info {
   padding-bottom:3px;
+}
+
+.tour-form {
+  text-align:center;
 }

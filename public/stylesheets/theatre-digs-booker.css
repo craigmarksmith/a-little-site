@@ -44,6 +44,7 @@ h1, h2 {
 }
 
 #sidebar {
+  position:relative;
   font-size:13px;
   float: left;
 }
@@ -54,8 +55,8 @@ h1, h2 {
 
 #why-edinburgh {
   position:absolute;
-  top:145px;
-  left:390px;
+  top:-30px;
+  left:130px;
   margin:0;
   padding:0;
 }

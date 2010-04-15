@@ -12,12 +12,20 @@
 
   <fieldset id="address">
     <legend>Contact Details:</legend>
-    <%= address_line(@dig.address_1, 'Address') %>
-    <%= address_line(@dig.address_2) %>
-    <%= address_line(@dig.address_3) %>
-    <%= address_line(@dig.postcode, 'Postcode') %>
-    <%= address_line(@dig.landline, 'Landline') %>
-    <%= address_line(@dig.mobile, 'Mobile') %>
-    <%= address_line(@dig.fax, 'Fax') %>
+    <% if is_authorised? %>
+      <%= address_line(@dig.address_1, 'Address') %>
+      <%= address_line(@dig.address_2) %>
+      <%= address_line(@dig.address_3) %>
+      <%= address_line(@dig.postcode, 'Postcode') %>
+      <%= address_line(@dig.landline, 'Landline') %>
+      <%= address_line(@dig.mobile, 'Mobile') %>
+      <%= address_line(@dig.fax, 'Fax') %>
+    <% else %>
+      <% form_tag authorise_digs_path(:dig_id => @dig.id), :class => 'tour-form' do %>
+        <%= content_tag(:p, @error, :class => 'error') if @error %>
+        <%= label_tag :tour_code, "Your tour code:" %><%= text_field_tag :tour_code %>
+        <%= submit_tag "Done" %>
+      <% end %>
+    <% end %>
   </fieldset>
 </div>

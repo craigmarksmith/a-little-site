@@ -1,5 +1,0 @@
-<% form_tag tour_authorise_path(:dig_id => params[:dig_id]) do %>
-  <%= content_tag(:p, @error, :class => 'error') if @error %>
-  <%= label_tag :tour_code, "Your tour code:" %><%= text_field_tag :tour_code %>
-  <%= submit_tag "Done" %>
-<% end %>

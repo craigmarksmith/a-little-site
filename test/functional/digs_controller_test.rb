@@ -14,6 +14,9 @@ class DigsControllerTest < ActionController::TestCase
     setup do
       get :show, :id => @dig.id
     end
+    should "not show the dig name" do
+      assert_select "h1#name", :text => @dig.name, :count => 0
+    end
     should "not show an address" do
       assert_select '.address-info', :count => 0
     end

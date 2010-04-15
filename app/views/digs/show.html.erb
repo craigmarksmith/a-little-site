@@ -1,5 +1,5 @@
 <div id='dig'>
-  <h1 id="name"><%= @dig.name %></h1>
+  <h1 id="name"><%= is_authorised? ? @dig.name : 'Dig' %></h1>
   <div class="section">
     <%= image_tag "/images/image-coming-soon.png" %>
     <p>from <strong class="price-per-week-from"><%= price_per_week_from(@dig) %></strong> per week</p>

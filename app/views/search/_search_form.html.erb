@@ -25,10 +25,10 @@
 
   <%= label_tag 'search[price_range]', 'Price range (£) per week' %>
   <% lower = (Dig.first(:order => 'price_per_week_from ASC').price_per_week_from.to_i/100) %>
-  <% upper = (Dig.last(:order => 'price_per_week_from ASC').price_per_week_from.to_i/100) %>
+  <% upper = (Dig.last(:order => 'price_per_week_from ASC').price_per_week_from.to_i/100)+20 %>
   <% range = (lower ... upper) %>
   <%= select_tag 'search[price_range_from]', options_for_select(range.step(20).map{|i| [i,i*100]}, @search.price_range_from.to_i) %>
-  <%= select_tag 'search[price_range_to]', options_for_select(range.step(20).map{|i| [i,i*100]}, @search.price_range_to.to_i > 0 ? @search.price_range_to.to_i : range.step(20).last*100) %>
+  <%= select_tag 'search[price_range_to]', options_for_select(range.step(20).map{|i| [i,i*100]}, @search.price_range_to.to_i > 0 ? @search.price_range_to.to_i : (range.step(20).last)*100) %>
   <br />
 
   <%= submit_tag("Find digs", :id => 'search-button') %>

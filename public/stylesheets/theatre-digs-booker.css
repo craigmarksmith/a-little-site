@@ -157,6 +157,10 @@ div.dig-details {
   padding:20px;
 }
 
+#dig .section.dig-details {
+  width:590px;
+}
+
 #address {
   clear:both;
   border: 2px solid #91928E;

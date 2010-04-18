@@ -6,9 +6,9 @@
     <p>from <strong class="price-per-week-from"><%= price_per_week_from(@dig) %></strong> per week</p>
     <p><span class='dig-type'><%= @dig.dig_types.first.name %></span></p>
   </div>
-  <div class="section">
+  <div class="section dig-details">
     <%= render :partial => 'shared/dig_details', :locals => {:dig => @dig} %><br/>
-    <%= @dig.landlords_notes %>
+    <%= h @dig.landlords_notes %>
   </div>
 
   <fieldset id="address">

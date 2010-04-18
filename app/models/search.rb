@@ -1,12 +1,12 @@
 class Search
 
-  ATTRIBUTES = [:theatre_id, :dig_type_id, :number_of_sofa_beds, :number_of_single_rooms, :number_of_twin_rooms, :number_of_double_rooms, :price_range_from, :price_range_to]
+  ATTRIBUTES = ['theatre_id', 'dig_type_id', 'number_of_sofa_beds', 'number_of_single_rooms', 'number_of_twin_rooms', 'number_of_double_rooms', 'price_range_from', 'price_range_to']
   attr_accessor *ATTRIBUTES
 
   def initialize(params = {})
     @errors = {}
     params.each do |key, value|
-      method = "#{key}=".to_sym
+      method = "#{key}="
       send(method, value) if respond_to? method
     end
   end
@@ -28,12 +28,12 @@ class Search
 
   def attributes
     ATTRIBUTES.inject({}) do |acc, attribute|
-      acc.merge(attribute => self.send(attribute))
+      acc.merge(attribute.to_sym => self.send(attribute))
     end
   end
 
   def valid?
-    @errors[:theatre_id] = 'Please select a theatre' unless theatre_id && !theatre_id.empty?
+    @errors['theatre_id'] = 'Please select a theatre' unless theatre_id && !theatre_id.empty?
     return @errors.empty?
   end
 

@@ -3,12 +3,12 @@ require 'test_helper'
 class SearchControllerTest < ActionController::TestCase
 
   def basic_search_params(params = {})
-    {
-      :number_of_sofa_beds => '0',
-      :number_of_single_rooms => '0',
-      :number_of_twin_rooms => '0',
-      :number_of_double_rooms => '0'
-    }.merge(params)
+    {'search' => {
+      'number_of_sofa_beds' => '0',
+      'number_of_single_rooms' => '0',
+      'number_of_twin_rooms' => '0',
+      'number_of_double_rooms' => '0'
+    }.merge(params)}
   end
 
   def setup
@@ -20,7 +20,7 @@ class SearchControllerTest < ActionController::TestCase
 
   context "when a theatre hasn't been chosen" do
     setup do
-      get :search, basic_search_params(:theatre_id => nil)
+      get :search, basic_search_params('theatre_id' => nil)
     end
 
     should "ask them to choose one" do
@@ -47,7 +47,7 @@ class SearchControllerTest < ActionController::TestCase
       Factory(:theatre_distance, :dig => @dig_1, :theatre => @theatre_1, :distance => 1.4 )
       Factory(:theatre_distance, :dig => @dig_3, :theatre => @theatre_1, :distance => 0.3 )
 
-      get :search, basic_search_params(:theatre_id => @theatre_1.id)
+      get :search, basic_search_params('theatre_id' => @theatre_1.id.to_s)
     end
 
     should "show number of beds" do
@@ -83,7 +83,7 @@ class SearchControllerTest < ActionController::TestCase
 
   context "when there are no products to display" do
     should "give appropriate message" do
-      get :search, basic_search_params(:theatre_id => @theatre_1.id)
+      get :search, basic_search_params('theatre_id' => @theatre_1.id.to_s)
       assert_select "#content", "Sorry, no digs matched your search criteria"
     end
   end

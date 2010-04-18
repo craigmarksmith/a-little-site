@@ -4,14 +4,14 @@ class SearchController < ApplicationController
   end
 
   def search
-    @search = Search.new(params)
+    @search = Search.new(params['search'])
 
     unless @search.valid?
       render :action => 'new'
       return
     end
 
-    @theatre = Theatre.find(params[:theatre_id])
+    @theatre = Theatre.find(params['search']['theatre_id'])
   end
 
 end

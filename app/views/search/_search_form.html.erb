@@ -4,31 +4,31 @@
 </div>
 <% form_tag search_path, :method => :get, :id => 'search-form' do %>
   <h1>Find digs</h1>
-  <div class="error"><%= @search.errors_for(:theatre_id) %></div>
-  <%= label_tag :theatre, 'Theatre' %>
-  <%= select_tag :theatre_id, options_for_select([['Please select', '']]+Theatre.all.map{|t| [t.name, t.id]}, @search.theatre_id.to_i) %><br />
+  <div class="error"><%= @search.errors_for('theatre_id') %></div>
+  <%= label_tag 'search[theatre_id]', 'Theatre' %>
+  <%= select_tag 'search[theatre_id]', options_for_select([['Please select', '']]+Theatre.all.map{|t| [t.name, t.id]}, @search.theatre_id.to_i) %><br />
 
-  <%= label_tag :type, 'Type' %>
-  <%= select_tag :dig_type_id, options_for_select([['Show all','']]+DigType.all.map{|dt| [dt.name, dt.id]}, @search.dig_type_id.to_i) %><br />
+  <%= label_tag 'search[dig_type_id]', 'Type' %>
+  <%= select_tag 'search[dig_type_id]', options_for_select([['Show all','']]+DigType.all.map{|dt| [dt.name, dt.id]}, @search.dig_type_id.to_i) %><br />
 
-  <%= label_tag :number_of_sofa_beds, 'Sofa beds' %>
-  <%= select_tag :number_of_sofa_beds, options_for_select((0..10).map{|i| i }, @search.number_of_sofa_beds.to_i) %><br />
+  <%= label_tag 'search[number_of_sofa_beds]', 'Sofa beds' %>
+  <%= select_tag 'search[number_of_sofa_beds]', options_for_select((0..10).map{|i| i }, @search.number_of_sofa_beds.to_i) %><br />
 
-  <%= label_tag :number_of_single_rooms, 'Single rooms' %>
-  <%= select_tag :number_of_single_rooms, options_for_select((0..10).map{|i| i }, @search.number_of_single_rooms.to_i) %><br />
+  <%= label_tag 'search[number_of_single_rooms]', 'Single rooms' %>
+  <%= select_tag 'search[number_of_single_rooms]', options_for_select((0..10).map{|i| i }, @search.number_of_single_rooms.to_i) %><br />
 
-  <%= label_tag :number_of_twin_rooms, 'Twin rooms' %>
-  <%= select_tag :number_of_twin_rooms, options_for_select((0..10).map{|i| i }, @search.number_of_twin_rooms.to_i) %><br />
+  <%= label_tag 'search[number_of_twin_rooms]', 'Twin rooms' %>
+  <%= select_tag 'search[number_of_twin_rooms]', options_for_select((0..10).map{|i| i }, @search.number_of_twin_rooms.to_i) %><br />
 
-  <%= label_tag :number_of_double_rooms, 'Double rooms' %>
-  <%= select_tag :number_of_double_rooms, options_for_select((0..10).map{|i| i }, @search.number_of_double_rooms.to_i) %><br />
+  <%= label_tag 'search[number_of_double_rooms]', 'Double rooms' %>
+  <%= select_tag 'search[number_of_double_rooms]', options_for_select((0..10).map{|i| i }, @search.number_of_double_rooms.to_i) %><br />
 
-  <%= label_tag :price_range, 'Price range (£) per week' %>
+  <%= label_tag 'search[price_range]', 'Price range (£) per week' %>
   <% lower = (Dig.first(:order => 'price_per_week_from ASC').price_per_week_from.to_i/100) %>
   <% upper = (Dig.last(:order => 'price_per_week_from ASC').price_per_week_from.to_i/100) %>
   <% range = (lower ... upper) %>
-  <%= select_tag :price_range_from, options_for_select(range.step(20).map{|i| [i,i*100]}, @search.price_range_from.to_i) %>
-  <%= select_tag :price_range_to, options_for_select(range.step(20).map{|i| [i,i*100]}, @search.price_range_to.to_i > 0 ? @search.price_range_to.to_i : range.step(20).last*100) %>
+  <%= select_tag 'search[price_range_from]', options_for_select(range.step(20).map{|i| [i,i*100]}, @search.price_range_from.to_i) %>
+  <%= select_tag 'search[price_range_to]', options_for_select(range.step(20).map{|i| [i,i*100]}, @search.price_range_to.to_i > 0 ? @search.price_range_to.to_i : range.step(20).last*100) %>
   <br />
 
   <%= submit_tag("Find digs", :id => 'search-button') %>

@@ -1,4 +1,5 @@
 <div id='dig'>
+  <% if session['last-search'] %><%= link_to 'Back to search results', search_path('search' => session['last-search']) %><% end %>
   <h1 id="name"><%= is_authorised? ? @dig.name : 'Dig' %></h1>
   <div class="section">
     <%= image_tag "/images/image-coming-soon.png" %>

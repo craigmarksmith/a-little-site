@@ -6,6 +6,8 @@ class SearchController < ApplicationController
   def search
     @search = Search.new(params['search'])
 
+    session['last-search'] = params['search']
+
     unless @search.valid?
       render :action => 'new'
       return

@@ -9,6 +9,14 @@ class DigsControllerTest < ActionController::TestCase
     @dig = Factory(:dig, :name => 'Daves place', :address_1 => '42 Your Mum street')
     @dig.dig_types << Factory(:dig_type, :name => 'Living with Landlord')
   end
+  
+  context "when looking at a dig" do
+    should "say we don't know the price when it's zero" do
+      @dig.update_attribute(:price_per_week_from,0)
+      get :show, :id => @dig.id
+      assert_select ".price-per-week-from", 'unknown'
+    end
+  end
 
   context "when the user hasn't entered a tour id" do
     setup do

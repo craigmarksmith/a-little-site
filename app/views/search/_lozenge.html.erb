@@ -1,6 +1,10 @@
 <div class='loz-left'>
   <%= image_tag "/images/image-coming-soon.png" %>
-  <div>From <span class="price-per-week"><%= price_per_week_from(dig) %></span> per week</div>
+  <% if dig.price_per_week_from > 0 %>
+    <div>From <span class="price-per-week"><%= price_per_week_from(dig) %></span> per week</div>
+  <% else %>
+    <div>Price <span class="price-per-week">unknown</span></div>
+  <% end %>
   <div>
     <span class="distance"><%= dig.theatre_distances.scoped(:conditions => ["theatre_id = ?", params['search']['theatre_id']]).first.try(:distance) %></span> miles from the <%= @theatre.name %>
   </div>

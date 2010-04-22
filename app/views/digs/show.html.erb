@@ -3,7 +3,12 @@
   <h1 id="name"><%= is_authorised? ? @dig.name : 'Accommodation' %></h1>
   <div class="section">
     <%= image_tag "/images/image-coming-soon.png" %>
-    <p>from <strong class="price-per-week-from"><%= price_per_week_from(@dig) %></strong> per week</p>
+    
+    <% if @dig.price_per_week_from > 0 %>
+      <p>from <strong class="price-per-week-from"><%= price_per_week_from(@dig) %></strong> per week</p>
+    <% else %>
+      <div>Price <span class="price-per-week-from">unknown</span></div>
+    <% end %>
     <p><span class='dig-type'><%= @dig.dig_types.first.name %></span></p>
   </div>
   <div class="section dig-details">

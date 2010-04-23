@@ -32,6 +32,30 @@ class SearchControllerTest < ActionController::TestCase
     end
   end
 
+  context "when we don't want to show theatres without prices" do
+    setup do
+      @dig_1 = Factory(:dig, :name => "Dave's mega place", :number_of_double_rooms => 2, :price_per_week_from => 1200, :sleeps => 4)
+      @dig_2 = Factory(:dig, :name => "No price", :number_of_double_rooms => 2, :price_per_week_from => 0)
+
+      dig_type = Factory(:dig_type, :name => 'Living with Landlord')
+
+      @dig_1.dig_types << dig_type
+      @dig_2.dig_types << dig_type
+
+      Factory(:theatre_distance, :dig => @dig_1, :theatre => @theatre_1, :distance => 1.4 )
+      Factory(:theatre_distance, :dig => @dig_2, :theatre => @theatre_1, :distance => 0.3 )
+
+      get :search, basic_search_params({'theatre_id' => @theatre_1.id.to_s, "hide_digs_without_prices"=>"on"})
+    end
+    should "not see digs without a price" do
+      assert_select "ul li#dig-#{@dig_2.id}", :count => 0
+    end
+
+    should "see digs with a price" do
+      assert_select "ul li#dig-#{@dig_1.id}"
+    end
+  end
+
   context "when there are search results" do
     setup do
       @dig_1 = Factory(:dig, :name => "Dave's mega place", :number_of_double_rooms => 2, :price_per_week_from => 1200, :sleeps => 4)
@@ -68,7 +92,7 @@ class SearchControllerTest < ActionController::TestCase
         assert_select ".price-per-week", '£12'
       end
     end
-    
+
     should "show unknow price when price is zero" do
       assert_select "ul li#dig-#{@dig_3.id}" do
         assert_select ".price-per-week", 'unknown'

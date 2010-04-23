@@ -30,6 +30,9 @@
   <%= select_tag 'search[price_range_from]', options_for_select(range.step(20).map{|i| [i,i*100]}, @search.price_range_from.to_i) %>
   <%= select_tag 'search[price_range_to]', options_for_select(range.step(20).map{|i| [i,i*100]}, @search.price_range_to.to_i > 0 ? @search.price_range_to.to_i : (range.step(20).last)*100) %>
   <br />
+  <%= label_tag 'search[hide_digs_without_prices]', 'Hide digs without prices' %>
+  <%= check_box_tag 'search[hide_digs_without_prices]', nil, @search.hide_digs_without_prices %>
 
+  <br />
   <%= submit_tag("Find digs", :id => 'search-button') %>
 <% end %>

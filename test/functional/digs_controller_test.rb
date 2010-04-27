@@ -9,7 +9,7 @@ class DigsControllerTest < ActionController::TestCase
     @dig = Factory(:dig, :name => 'Daves place', :address_1 => '42 Your Mum street')
     @dig.dig_types << Factory(:dig_type, :name => 'Living with Landlord')
   end
-  
+
   context "when looking at a dig" do
     should "say we don't know the price when it's zero" do
       @dig.update_attribute(:price_per_week_from,0)
@@ -42,7 +42,7 @@ class DigsControllerTest < ActionController::TestCase
       assert_select '.address-info'
     end
   end
-  
+
   context "when entered a tour code" do
     context "when the incorrect code is given" do
       setup do
@@ -55,7 +55,7 @@ class DigsControllerTest < ActionController::TestCase
         assert_nil session['tour_code']
       end
     end
-  
+
     context "when the correct code is given" do
       setup do
         put :authorise, :tour_code => 'ABC123', :dig_id => @dig.id
@@ -67,6 +67,28 @@ class DigsControllerTest < ActionController::TestCase
         assert_equal session['tour_code'], 'ABC123'
       end
     end
+
+  end
+end
+
+class DigOwnerTest < ActionController::TestCase
   
+  tests DigsController
+  context "when an unexpected hash_code is entered" do
+    should "throw not found" do
+      assert_raises ActiveRecord::RecordNotFound do
+        get :edit, :id => 'ABC123'
+      end
+    end
+  end
+  
+  context "when editing digs" do
+    setup do
+      @dig = Factory(:dig, :name => 'Daves Digs')
+    end
+    should "be able to see my information" do
+      get :edit, :id => @dig.hash_code
+      assert_select "#dig_name[value=?]", 'Daves Digs'
+    end
   end
 end

@@ -1,4 +1,5 @@
 development:
+  username: root
   adapter: mysql
   database: threatredigsbooker_dev
 

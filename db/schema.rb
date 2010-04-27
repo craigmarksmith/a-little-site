@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100412100833) do
+ActiveRecord::Schema.define(:version => 20100427080630) do
 
   create_table "dig_types", :force => true do |t|
     t.string   "name"
@@ -41,7 +41,10 @@ ActiveRecord::Schema.define(:version => 20100412100833) do
     t.datetime "updated_at"
     t.integer  "dig_type_id"
     t.integer  "price_per_week_from",    :default => 0, :null => false
+    t.string   "hash_code"
   end
+
+  add_index "digs", ["hash_code"], :name => "index_digs_on_hash_code"
 
   create_table "theatre_distances", :force => true do |t|
     t.integer  "dig_id"

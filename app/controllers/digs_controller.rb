@@ -5,6 +5,16 @@ class DigsController < ApplicationController
     @dig = Dig.find(params[:id])
   end
 
+  def edit
+    @dig = Dig.find_by_hash_code!(params[:id])
+  end
+
+  def update
+    @dig = Dig.find_by_hash_code!(params[:id])
+    @dig.update_attributes(params[:dig])
+    render :template => '/digs/successful_update.html.erb'
+  end
+
   def authorise
     @dig = Dig.find(params[:dig_id])
     tour = Tour.find_by_code(params[:tour_code])

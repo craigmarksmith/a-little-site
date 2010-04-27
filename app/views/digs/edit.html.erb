@@ -1,0 +1,4 @@
+<% form_for @dig, :url => {:id => @dig.hash_code, :action => 'update'} do |f| %>
+  <%= render :partial => '/admin/digs/dig_form_elements', :locals => {:f => f} %>
+  <%= f.submit "Update" %>
+<% end %>

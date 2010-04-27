@@ -5,8 +5,8 @@
 </p>
 
 <p>
-  <%= f.label :dig_types %><br/>
-  <%= f.select :dig_types, DigType.all.map{|dt| [dt.name, dt.id]}, options = {:selected => @dig.dig_types.map(&:id)}, html_options = {:multiple => true, :size => DigType.all.size} %>
+  <%= f.label :dig_type_ids %><br/>
+  <%= f.select :dig_type_ids, DigType.all.map{|dt| [dt.name, dt.id]}, options = {:selected => @dig.dig_types.map(&:id)}, html_options = {:multiple => true, :size => DigType.all.size} %>
 </p>
 
 <p>

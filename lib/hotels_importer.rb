@@ -2,8 +2,8 @@ require 'fastercsv'
 class HotelsImporter
 
   def self.import(path)
-    Dig.delete_all
-    TheatreDistance.delete_all
+    # Dig.delete_all
+    # TheatreDistance.delete_all
 
     FasterCSV.open(path, :headers => :first_row) do |csv|
       csv.each do |row|
@@ -33,7 +33,7 @@ class HotelsImporter
 
   def self.dig_attributes(row)
     landlords_notes = "Landlord's Notes                                           whb=wash hand basin, ph=phone, fx=fax, wc=loo, wm=washing machine, mw=microwave, ff=fridgefreezer, dw=dishwasher "
-    
+
     dig_attributes = {}
     dig_attributes[:name] = row['Name'] if row['Name']
     dig_attributes[:sleeps] = row['Sleeps (up to)'] if row['Sleeps (up to)']

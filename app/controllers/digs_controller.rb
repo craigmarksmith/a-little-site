@@ -33,7 +33,7 @@ class DigsController < ApplicationController
 
 private
   def is_authorised?
-    session['tour_code']
+    session['tour_code'] || @dig.privacy == Dig::PRIVACY_ANYONE
   end
 
 end

@@ -33,6 +33,16 @@ class DigsControllerTest < ActionController::TestCase
     end
   end
 
+  context "when there's no tour id but privacy is set to anyone" do
+    setup do
+      @dig.update_attribute(:privacy, Dig::PRIVACY_ANYONE)
+      get :show, :id => @dig.id
+    end
+    should "show the dig address" do
+      assert_select '.address-info'
+    end
+  end
+
   context "when a tour code has been entered" do
     setup do
       session['tour_code'] = 'ABC123'

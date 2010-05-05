@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100427080630) do
+ActiveRecord::Schema.define(:version => 20100428081638) do
 
   create_table "dig_types", :force => true do |t|
     t.string   "name"
@@ -40,8 +40,9 @@ ActiveRecord::Schema.define(:version => 20100427080630) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "dig_type_id"
-    t.integer  "price_per_week_from",    :default => 0, :null => false
+    t.integer  "price_per_week_from",    :default => 0,                            :null => false
     t.string   "hash_code"
+    t.string   "privacy",                :default => "theatre professionals only"
   end
 
   add_index "digs", ["hash_code"], :name => "index_digs_on_hash_code"

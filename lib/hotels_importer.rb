@@ -34,21 +34,30 @@ class HotelsImporter
   def self.dig_attributes(row)
     landlords_notes = "Landlord's Notes                                           whb=wash hand basin, ph=phone, fx=fax, wc=loo, wm=washing machine, mw=microwave, ff=fridgefreezer, dw=dishwasher "
 
-    dig_attributes = {}
-    dig_attributes[:name] = row['Name'] if row['Name']
-    dig_attributes[:sleeps] = row['Sleeps (up to)'] if row['Sleeps (up to)']
-    dig_attributes[:number_of_twin_rooms] = row['Twin'] if row['Twin']
-    dig_attributes[:number_of_double_rooms] = row['Double'] if row['Double']
-    dig_attributes[:number_of_single_rooms] = row['Single'] if row['Single']
-    dig_attributes[:number_of_sofa_beds] = row['Sofa bed'] if row['Sofa bed']
-    dig_attributes[:landlords_notes] = row[landlords_notes] if row[landlords_notes]
-    dig_attributes[:address_1] = row['Address 1'] if row['Address 1']
-    dig_attributes[:address_2] = row['Address 2'] if row['Address 2']
-    dig_attributes[:address_3] = row['Address 3'] if row['Address 3']
-    dig_attributes[:postcode] = row['Postcode'] if row['Postcode']
-    dig_attributes[:landline] = row['Landline'] if row['Landline']
-    dig_attributes[:mobile] = row['Mobile'] if row['Mobile']
-    dig_attributes[:fax] = row['Fax'] if row['Fax']
+    mappings = {
+      :name => 'Name',
+      :sleeps => 'Sleeps (up to)',
+      :building => 'Building',
+      :price_per_night => 'Price Per Night            £',
+      :price_per_week => 'Price Per Week          £',
+      :number_of_twin_rooms => 'Twin',
+      :number_of_double_rooms => 'Double',
+      :number_of_single_rooms => 'Single',
+      :number_of_sofa_beds => 'Sofa bed',
+      :landlords_notes => landlords_notes,
+      :address_1 => 'Address 1',
+      :address_2 => 'Address 2',
+      :address_3 => 'Address 3',
+      :postcode => 'Postcode',
+      :landline => 'Landline',
+      :mobile => 'Mobile',
+      :fax => 'Fax'
+    }
+
+    dig_attributes = mappings.inject({}) do |acc, (k,v)|
+      acc[k] = row[v] if row[v]
+      acc
+    end
     dig_attributes[:price_per_week_from] = (row['Price Per Week         (7 nights)FROM      £'].sub('£','').to_f * 100).to_i if row['Price Per Week         (7 nights)FROM      £']
 
     dig_attributes

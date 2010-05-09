@@ -5,13 +5,13 @@
 </p>
 
 <p>
-  <%= f.label :dig_type_ids %><br/>
+  <%= f.label :dig_type_ids, "Dig Type" %><br/>
   <%= f.select :dig_type_ids, DigType.all.map{|dt| [dt.name, dt.id]}, options = {:selected => @dig.dig_types.map(&:id)}, html_options = {:multiple => true, :size => DigType.all.size} %>
 </p>
 
 <p>
-  <%= f.label :price_per_week_from, "Price per week in pence" %><br/>
-  <%= f.text_field :price_per_week_from %>
+  <%= f.label :price_per_week_from, "Price per week from" %><br/>
+  £<%= f.text_field :price_per_week_from_pounds, :style => 'width:35px', :maxlength => 5 %>.<%= f.text_field :price_per_week_from_pence, :style => 'width:25px', :maxlength => 2 %>p
 </p>
 
 <p>

@@ -82,7 +82,7 @@ class DigsControllerTest < ActionController::TestCase
 end
 
 class DigOwnerTest < ActionController::TestCase
-  
+
   tests DigsController
   context "when an unexpected hash_code is entered" do
     should "throw not found" do
@@ -91,7 +91,7 @@ class DigOwnerTest < ActionController::TestCase
       end
     end
   end
-  
+
   context "when editing digs" do
     setup do
       @dig = Factory(:dig, :name => 'Daves Digs')
@@ -99,6 +99,12 @@ class DigOwnerTest < ActionController::TestCase
     should "be able to see my information" do
       get :edit, :id => @dig.hash_code
       assert_select "#dig_name[value=?]", 'Daves Digs'
+    end
+    should "be able to enter price in pounds and pence" do
+      put :update, :id => @dig.hash_code, :dig => {'price_per_week_from_pounds' => '80', 'price_per_week_from_pence' => '32'}
+      @dig.reload
+
+      assert_equal 8032, @dig.price_per_week_from
     end
   end
 end

@@ -1,6 +1,8 @@
 class Admin::DigsController < AdminController
   layout 'admin'
 
+  include DigControllerHelper
+
   def index
     @digs = Dig.all
   end
@@ -25,7 +27,7 @@ class Admin::DigsController < AdminController
   end
 
   def update
-    Dig.find(params[:id]).update_attributes(params[:dig])
+    Dig.find(params[:id]).update_attributes(dig_params)
     redirect_to :action => 'index'
   end
 

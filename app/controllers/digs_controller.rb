@@ -1,6 +1,8 @@
 class DigsController < ApplicationController
   layout 'one_column'
 
+  include DigControllerHelper
+
   def show
     @dig = Dig.find(params[:id])
   end
@@ -11,7 +13,8 @@ class DigsController < ApplicationController
 
   def update
     @dig = Dig.find_by_hash_code!(params[:id])
-    @dig.update_attributes(params[:dig])
+    @dig.update_attributes(dig_params)
+
     render :template => '/digs/successful_update.html.erb'
   end
 

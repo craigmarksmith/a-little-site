@@ -17,4 +17,12 @@ class Dig < ActiveRecord::Base
     self[:hash_code] = Digest::SHA1.hexdigest(Time.now.to_s + "PHIL-THINKS-THAT-YOU-SHOULD-PROBABLY-PAY-FOR-A-DRINK" + name)
     save!
   end
+
+  def price_per_week_from_pounds
+   price_per_week_from/100.to_i
+  end
+
+  def price_per_week_from_pence
+    price_per_week_from.to_s[-2,2]
+  end
 end

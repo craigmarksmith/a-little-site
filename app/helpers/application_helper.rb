@@ -6,7 +6,10 @@ module ApplicationHelper
   end
 
   def price_per_week_from(dig)
-    number_to_currency(dig.price_per_week_from.to_i/100, {:unit => '£', :precision => 0})
+    currency_hash = {:unit => '£', :precision => 0}
+    currency_hash[:precision] = 2 unless dig.price_per_week_from_pence == '00'
+
+    number_to_currency(dig.price_per_week_from.to_f/100, currency_hash)
   end
 
   def address_line(data, label = nil)

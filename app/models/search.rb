@@ -41,4 +41,8 @@ class Search
   def errors_for(attribute)
     @errors[attribute]
   end
+
+  def theatre
+    Theatre.find(theatre_id)
+  end
 end

@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  Find theatre accommodation near to <%= @search.theatre.name %> in <%= "Edinburgh" %>
+<% end %>
+
 <% content_for :sidebar do %>
   <%= render :partial => 'search_form' %>
 <% end %>

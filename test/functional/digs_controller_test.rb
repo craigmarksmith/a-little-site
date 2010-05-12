@@ -41,6 +41,9 @@ class DigsControllerTest < ActionController::TestCase
     should "show the dig address" do
       assert_select '.address-info'
     end
+    should "show dig name in title" do
+      assert_select "title", "Daves place - Theatre Digs Booker"
+    end
   end
 
   context "when a tour code has been entered" do

@@ -1,9 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <title>Theatre Digs Booker</title>
+    <title><% if is_authorised? %><%= "#{@dig.name} - " %><% end %>Theatre Digs Booker</title>
     <%= stylesheet_link_tag "reset-min" %>
     <%= stylesheet_link_tag "theatre-digs-booker" %>
+    <meta name="description" content="Find accommodation theatre accommodation in Edinburgh"/>
+    <meta name="keywords" content="theatre digs, theatre accommodation, edinburgh, self catering, living with landlord"/>
   </head>
   <body>
     <div id="page">

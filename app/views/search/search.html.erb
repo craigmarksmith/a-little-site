@@ -7,6 +7,16 @@
 <% end %>
 
 <% unless @search.results.empty? %>
+  <% form_tag(search_path, :method => 'get') do %>
+    <%= label_tag 'search[sort_by]', 'Sort by...' %>
+    <%= select_tag "search[sort_by]", options_for_select(Search::SORT_ORDERS, @search.sort_order) %>
+
+    <% Search::ATTRIBUTES.reject{|a| a == "sort_by"}.each do |attr| %>
+      <%= hidden_field_tag "search[#{attr}]", @search.send(attr) %>
+    <% end %>
+
+    <%= submit_tag("Go") %>
+  <% end %>
   <ul>
   <% @search.results.each do |dig| %>
     <li class="lozenge" id="dig-<%= dig.id %>"><%= render :partial => 'lozenge', :locals => {:dig => dig} %></li>

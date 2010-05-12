@@ -1,13 +1,19 @@
 class Search
 
-  ATTRIBUTES = ['theatre_id', 'dig_type_id', 'number_of_sofa_beds', 'number_of_single_rooms', 'number_of_twin_rooms', 'number_of_double_rooms', 'price_range_from', 'price_range_to', 'hide_digs_without_prices']
+  ATTRIBUTES = ['theatre_id', 'dig_type_id', 'number_of_sofa_beds', 'number_of_single_rooms', 'number_of_twin_rooms', 'number_of_double_rooms', 'price_range_from', 'price_range_to', 'hide_digs_without_prices', 'sort_by']
   attr_accessor *ATTRIBUTES
+
+  SORT_ORDERS = [
+    ['Price (lowest first)','price_per_week_from asc'],
+    ['Price (highest first)', 'price_per_week_from desc'],
+    ['Distance (closest first)', 'theatre_distances.distance ASC']
+  ]
 
   def initialize(params = {})
     @errors = {}
     params.each do |key, value|
       method = "#{key}="
-      send(method, value) if respond_to? method
+      send(method, value) if respond_to?(method) && value && !value.empty?
     end
   end
 
@@ -24,7 +30,12 @@ class Search
     dig_conditions << "price_per_week_from <= :price_range_to" if price_range_to
     dig_conditions << "price_per_week_from > 0" if hide_digs_without_prices
 
-    Dig.find(:all, :joins => [:dig_types, :theatres], :conditions => [dig_conditions.join(' AND '),  attributes], :order => 'theatre_distances.distance ASC')
+    Dig.find(
+      :all,
+      :joins => [:dig_types, :theatres],
+      :conditions => [dig_conditions.join(' AND '),  attributes],
+      :order => sort_order
+    )
   end
 
   def attributes
@@ -44,5 +55,9 @@ class Search
 
   def theatre
     Theatre.find(theatre_id)
+  end
+  
+  def sort_order
+    return sort_by || 'theatre_distances.distance ASC'
   end
 end

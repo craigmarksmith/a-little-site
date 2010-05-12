@@ -10,12 +10,14 @@
     <th>Name</th>
     <th>Edit URL</th>
     <th></th>
+    <th></th>
   </tr>
 <% @digs.each do |dig| %>
   <tr class="<%= cycle('odd', 'even') %>">
     <td><%= dig.name %></td>
     <td><%= edit_dig_path(dig.hash_code) %></td>
     <td><%= link_to "Edit", edit_admin_dig_path(dig) %></td>
+    <td><%= link_to "Delete", admin_dig_path(dig), :method => 'delete', :confirm => "Are you sure you want to delete #{dig.name}" %></td>
   </tr>
 <% end %>
 </table>

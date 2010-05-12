@@ -26,6 +26,11 @@ class Admin::DigsController < AdminController
     @dig = Dig.find(params[:id])
   end
 
+  def destroy
+    Dig.find(params[:id]).destroy
+    redirect_to :action => 'index'
+  end
+
   def update
     Dig.find(params[:id]).update_attributes(dig_params)
     redirect_to :action => 'index'

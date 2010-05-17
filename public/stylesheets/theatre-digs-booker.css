@@ -234,3 +234,9 @@ div.dig-details {
 #homepage {
   text-align:center;
 }
+
+form.sort {
+  font-size:11px;
+  padding-top:5px;
+  padding-bottom:20px;
+}

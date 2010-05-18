@@ -16,6 +16,19 @@ class DigsControllerTest < ActionController::TestCase
       get :show, :id => @dig.id
       assert_select ".price-per-week-from", 'unknown'
     end
+
+    context "that has images" do
+      setup do
+        2.times do
+          @dig.images << Factory(:image)
+        end
+        @dig.save
+        get :show, :id => @dig.id
+      end
+      should "show them" do
+        assert_select ".section img", :count => 2
+      end
+    end
   end
 
   context "when the user hasn't entered a tour id" do

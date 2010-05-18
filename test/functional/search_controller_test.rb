@@ -68,6 +68,9 @@ class SearchControllerTest < ActionController::TestCase
       @dig_2.dig_types << dig_type
       @dig_3.dig_types << dig_type
 
+      @dig_1.images << Factory(:image)
+      @dig_1.save!
+
       Factory(:theatre_distance, :dig => @dig_1, :theatre => @theatre_1, :distance => 1.4 )
       Factory(:theatre_distance, :dig => @dig_3, :theatre => @theatre_1, :distance => 0.3 )
 
@@ -76,6 +79,18 @@ class SearchControllerTest < ActionController::TestCase
 
     should "save the search to the session so we can go back" do
       assert_equal @theatre_1.id.to_s, @request.session['last-search']['theatre_id']
+    end
+
+    should "show the first image" do
+      assert_select "ul li#dig-#{@dig_1.id}" do
+        assert_select "img[src=?]", "/photos/thumb/missing.png"
+      end
+    end
+
+    should "show image coming soon when no images" do
+      assert_select "ul li#dig-#{@dig_3.id}" do
+        assert_select "img[src*=?]", "/images/image-coming-soon.png"
+      end
     end
 
     should "show number of beds" do

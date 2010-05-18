@@ -26,3 +26,6 @@ end
 Factory.define :tour do
 end
 
+Factory.define :image do
+end
+

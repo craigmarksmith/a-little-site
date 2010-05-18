@@ -1,5 +1,9 @@
 <div class='loz-left'>
-  <%= image_tag "/images/image-coming-soon.png" %>
+  <% if dig.images.first %>
+    <%= image_tag dig.images.first.photo.url(:thumb) %>
+  <% else %>
+    <%= image_tag "/images/image-coming-soon.png" %>
+  <% end %>
   <% if dig.price_per_week_from > 0 %>
     <div>From <span class="price-per-week"><%= price_per_week_from(dig) %></span> per week</div>
   <% else %>

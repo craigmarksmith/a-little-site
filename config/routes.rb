@@ -32,7 +32,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :user_sessions
   map.search '/search', :controller => 'search', :action => 'search'
 
-  map.resources :digs, :collection => {:authorise => :post}
+  map.resources :digs, :collection => {:authorise => :post} do |digs|
+    digs.resources :images
+  end
 
   map.faq 'faq', :controller => 'static', :action => 'faq'
 

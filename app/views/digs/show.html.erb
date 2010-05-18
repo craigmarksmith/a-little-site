@@ -1,3 +1,5 @@
+<% content_for :title do %><% if is_authorised? %><%= "#{@dig.name} - " %><% end %><% end %>
+
 <div id='dig'>
   <% if session['last-search'] %><%= link_to 'Back to search results', search_path('search' => session['last-search']) %><% end %>
   <h1 id="name"><%= is_authorised? ? @dig.name : 'Accommodation' %></h1>

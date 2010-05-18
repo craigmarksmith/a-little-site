@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <title><% if @dig && is_authorised? %><%= "#{@dig.name} - " %><% end %>Theatre Digs Booker</title>
+    <title><%= yield :title %>Theatre Digs Booker</title>
     <%= stylesheet_link_tag "reset-min" %>
     <%= stylesheet_link_tag "theatre-digs-booker" %>
     <meta name="description" content="Find accommodation theatre accommodation for the Edinburgh festival"/>

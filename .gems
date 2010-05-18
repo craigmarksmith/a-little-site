@@ -1,2 +1,4 @@
 authlogic --version '>= 2.1.3'
 fastercsv
+paperclip
+aws-s3

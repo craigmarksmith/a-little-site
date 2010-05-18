@@ -1,0 +1,12 @@
+<% @dig.images.each do |image| %>
+  <%= image_tag image.photo.url(:thumb) %>
+<% end %>
+<br/>
+
+<% if @dig.images.size < 2 %>
+  Add Image:
+  <% form_for :images, :html => { :multipart => true } do |image| %>
+    <%= image.file_field :photo %>
+    <%= submit_tag %>
+  <% end %>
+<% end %>

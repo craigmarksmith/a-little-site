@@ -12,5 +12,11 @@ module ImagesControllerHelper
 
     redirect_to :action => 'index'
   end
-  
+
+  def delete
+    image = Image.find(params[:id])
+    dig = image.dig
+    image.destroy
+    redirect_to :action => 'index', :dig_id => dig.hash_code
+  end
 end

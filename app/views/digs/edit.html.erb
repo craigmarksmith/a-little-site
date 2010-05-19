@@ -1,3 +1,7 @@
+<% content_for :meta do %>
+  <meta name="robots" content="noindex" />
+<% end %>
+
 <%= link_to "Manage Images", dig_images_path(@dig.hash_code) %>
 <% form_for @dig, :url => {:id => @dig.hash_code, :action => 'update'} do |f| %>
   <%= render :partial => '/admin/digs/dig_form_elements', :locals => {:f => f} %>

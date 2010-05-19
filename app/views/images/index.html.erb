@@ -1,3 +1,7 @@
+<% content_for :meta do %>
+  <meta name="robots" content="noindex" />
+<% end %>
+
 <% @dig.images.each do |image| %>
   <%= image_tag image.photo.url(:thumb) %>
   <%= button_to "Delete Image", { :action => "delete", :id => image.id }, :confirm => "Are you sure?", :method => :delete %>

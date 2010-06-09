@@ -109,7 +109,8 @@ ul.footer-menu {
   color:#91928E;
 }
 
-.tel {
+.tel,
+.email {
   margin-right:10px;
 }
 

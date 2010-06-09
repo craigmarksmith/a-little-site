@@ -32,7 +32,7 @@ class HotelsImporter
   end
 
   def self.dig_attributes(row)
-    landlords_notes = "Landlord's Notes                                           whb=wash hand basin, ph=phone, fx=fax, wc=loo, wm=washing machine, mw=microwave, ff=fridgefreezer, dw=dishwasher "
+    landlords_notes = "Landlord's Notes                                           whb=wash hand basin, ph=phone, fx=fax, wc=loo, wm=washing machine, mw=microwave, ff=fridgefreezer, dw=dishwasher, td= tumble dryer"
 
     mappings = {
       :name => 'Name',
@@ -58,6 +58,7 @@ class HotelsImporter
       acc[k] = row[v] if row[v]
       acc
     end
+
     dig_attributes[:price_per_week_from] = (row['Price Per Week         (7 nights)FROM      £'].sub('£','').to_f * 100).to_i if row['Price Per Week         (7 nights)FROM      £']
 
     dig_attributes

@@ -3,14 +3,16 @@ require 'dig'
 class ShortenLandlordsNotes < ActiveRecord::Migration
   def self.up
     self.name_notes.each do |name_note|
-      Dig.find_by_name(name_note[:name]).update_attribute(:landlords_notes, name_note[:notes][0...140])
+      if dig = Dig.find_by_name(name_note[:name])
+        dig.update_attribute(:landlords_notes, name_note[:notes][0...140])
+      end
     end
   end
 
   def self.down
   end
   
-  private
+private
   def self.name_notes
     thing = [
     {:name => "Attn Nick, Dream House", :notes => "2x1 bed/2x2 bed apartments.TV/CD/ADSL/wm/dryer, quiet 5*. Buses to Festival & King's Theatres."},

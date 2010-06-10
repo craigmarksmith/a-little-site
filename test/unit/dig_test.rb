@@ -9,6 +9,14 @@ class DigTest < ActiveSupport::TestCase
   def test_should_only_allow_140_chars_for_landlords_notes
     dig = Dig.new(:name => "Daves lovely old place", :landlords_notes => random_string(150))
     assert !dig.valid?
+
+    dig = Dig.new(:name => "Daves lovely old place", :landlords_notes => random_string(130))
+    assert dig.valid?
+  end
+
+  def test_should_only_unlimited_chars_for_landlords_notes_when_is_a_member
+    dig = Dig.new(:name => "Daves lovely old place", :member => true, :landlords_notes => random_string(150))
+    assert dig.valid?
   end
 
 private

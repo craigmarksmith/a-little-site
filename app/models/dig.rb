@@ -11,7 +11,7 @@ class Dig < ActiveRecord::Base
   has_many :theatres, :through => :theatre_distances
   has_many :images
   validates_presence_of :name
-  validates_length_of :landlords_notes, :maximum => 140, :allow_nil => true, :allow_blank => true
+  validates_length_of :landlords_notes, :maximum => 140, :allow_nil => true, :allow_blank => true, :if => lambda {|dig| !dig.member?}
 
   after_create :create_hash_code
 

@@ -55,7 +55,7 @@
 </p>
 
 <p>
-  <%= f.label :landlords_notes %><br/>
+  <%= f.label :landlords_notes, @dig.member? ? "Landlords notes" : "Landlords notes (only 140 characters allowed)" %><br/>
   <%= f.text_field :landlords_notes %>
 </p>
 

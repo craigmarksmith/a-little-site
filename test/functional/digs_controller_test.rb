@@ -122,5 +122,14 @@ class DigOwnerTest < ActionController::TestCase
 
       assert_equal 8032, @dig.price_per_week_from
     end
+    should "not be able to see membership status" do
+      get :edit, :id => @dig.hash_code
+      assert_select "#dig_member", :count => 0
+    end
+    should "not be able to set membership status" do
+      put :update, :id => @dig.hash_code, :dig => {'member' => true}
+      @dig.reload
+      assert !@dig.member?
+    end
   end
 end

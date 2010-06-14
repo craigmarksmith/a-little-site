@@ -8,6 +8,7 @@ class Dig < ActiveRecord::Base
 
   has_and_belongs_to_many :dig_types
   has_many :theatre_distances
+  accepts_nested_attributes_for :theatre_distances
   has_many :theatres, :through => :theatre_distances
   has_many :images
   validates_presence_of :name

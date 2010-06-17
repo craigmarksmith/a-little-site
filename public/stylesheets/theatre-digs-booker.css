@@ -170,6 +170,19 @@ div.dig-details {
   margin: 0 auto;
 }
 
+.large-image-container {
+  padding-bottom:10px;
+}
+
+.small-image {
+  padding: 2px;
+}
+
+.small-image.selected {
+  padding:0;
+  border: 2px solid #000;
+}
+
 .lozenge .loz-left {
   padding-right:15px;
 }

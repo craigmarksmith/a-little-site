@@ -4,14 +4,13 @@
   <% if session['last-search'] %><%= link_to 'Back to search results', search_path('search' => session['last-search']) %><% end %>
   <h1 id="name"><%= is_authorised? ? @dig.name : 'Accommodation' %></h1>
   <div class="section">
-    <% if @dig.images.size > 0 %>
-      <% @dig.images.each do |image| %>
-        <%= image_tag image.photo.url(:thumb), :alt => '' %>
-      <% end %>
+
+    <% if @dig.member? %>
+      <%= render :partial => 'member_images' %>
     <% else %>
-      <%= image_tag "/images/image-coming-soon.png" %>
+      <%= render :partial => 'basic_images' %>
     <% end %>
-    
+
     <% if @dig.price_per_week_from > 0 %>
       <p>from <strong class="price-per-week-from"><%= price_per_week_from(@dig) %></strong> per week</p>
     <% else %>

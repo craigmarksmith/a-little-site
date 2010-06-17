@@ -4,11 +4,10 @@
     <title><%= yield :title %>Theatre Digs Booker</title>
     <%= stylesheet_link_tag "reset-min" %>
     <%= stylesheet_link_tag "theatre-digs-booker" %>
-    <meta name="description" content="Find accommodation theatre accommodation for the Edinburgh festival"/>
-    <meta name="keywords" content="theatre digs, theatre accommodation, Edinburgh, Edinburgh Festival, self catering, living with landlord"/>
+    <%= render 'shared/header' %>
     <%= yield :meta %>
   </head>
-  <body>
+  <body class="<%= javascript_feature_classes %>">
     <div id="page">
       <div id="header">
         <a href="/"><img src="/images/logo.png" alt="Theatre Digs Booker" title="Theatre Digs Booker"/></a>

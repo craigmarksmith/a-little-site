@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100610031714) do
+ActiveRecord::Schema.define(:version => 20100615104222) do
 
   create_table "dig_types", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20100610031714) do
     t.integer "dig_id"
     t.integer "dig_type_id"
   end
+
+  add_index "dig_types_digs", ["dig_type_id"], :name => "index_dig_types_digs_on_dig_type_id"
 
   create_table "digs", :force => true do |t|
     t.string   "name"
@@ -68,6 +70,8 @@ ActiveRecord::Schema.define(:version => 20100610031714) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "theatre_distances", ["dig_id"], :name => "index_theatre_distances_on_dig_id"
 
   create_table "theatres", :force => true do |t|
     t.string   "name"

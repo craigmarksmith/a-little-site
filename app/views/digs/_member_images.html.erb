@@ -1,0 +1,14 @@
+<% unless @dig.images.size < 1 %>
+  <div class='large-image-container'>
+    <%= image_tag @dig.images.first.photo.url(:large), :alt => '', :id => 'large-image' %>
+  </div>
+  <div class='small-images'>
+    <% @dig.images.each_with_index do |image, index| %>
+      <%= image_tag image.photo.url(:thumb), :alt => '', :class => "small-image #{index == 0 ? 'selected' : ''}" %>
+    <% end %>
+  </div>
+<% else %>
+  <%= image_tag "/images/image-coming-soon.png" %>
+<% end %>
+
+<%= use_javascript_for("DigImages") %>

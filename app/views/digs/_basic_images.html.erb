@@ -1,0 +1,7 @@
+<% if @dig.images.size > 0 %>
+  <% @dig.images.each do |image| %>
+    <%= image_tag image.photo.url(:medium), :alt => '' %>
+  <% end %>
+<% else %>
+  <%= image_tag "/images/image-coming-soon.png" %>
+<% end %>

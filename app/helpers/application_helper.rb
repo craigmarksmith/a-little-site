@@ -16,4 +16,13 @@ module ApplicationHelper
     label = "#{label}: " if label
     "<span class='address-label'>#{label}</span><span class='address-info'>#{data}</span><br/>" if data
   end
+
+  def javascript_feature_classes
+    (@javascript_features || []).map{|feature| "with-js-#{feature}"}.join(" ")
+  end
+
+  def use_javascript_for(feature)
+    @javascript_features ||= []
+    @javascript_features << feature
+  end
 end

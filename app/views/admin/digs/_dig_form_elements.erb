@@ -91,7 +91,9 @@
 
 <p>
   <%= f.label :landlords_notes, @dig.member? ? "Landlords notes" : "Landlords notes (only 140 characters allowed)" %><br/>
-  <%= f.text_area :landlords_notes, :rows => 10 %>
+  <% text_area_options = {:rows => 10, :maxlength => 140} %>
+  <% text_area_options.delete(:maxlength) if @dig.member? %>
+  <%= f.text_area :landlords_notes, text_area_options %>
 </p>
 
 <% if in_admin_area? %>

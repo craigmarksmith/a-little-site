@@ -42,5 +42,11 @@ class Admin::DigsController < AdminController
     redirect_to :action => 'index'
   end
 
+  def regenerate_dig_path
+    @dig = Dig.find(params[:id])
+    @dig.create_hash_code
+    redirect_to :action => 'index'
+  end
+
   helper_method :in_admin_area?
 end

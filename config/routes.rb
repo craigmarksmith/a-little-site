@@ -41,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.homepage '/', :controller => "home"
     admin.resources :theatres
-    admin.resources :digs, :collection => {:upload_dig_sheet_form => :get, :upload_dig_sheet => :post} do |digs|
+    admin.resources :digs, :collection => {:upload_dig_sheet_form => :get, :upload_dig_sheet => :post, :regenerate_dig_path => :post} do |digs|
       digs.resources :images
     end
     admin.resources :dig_types

@@ -55,11 +55,6 @@
 </p>
 
 <p>
-  <%= f.label :landlords_notes, @dig.member? ? "Landlords notes" : "Landlords notes (only 140 characters allowed)" %><br/>
-  <%= f.text_field :landlords_notes %>
-</p>
-
-<p>
   <%= f.label :address_1 %><br/>
   <%= f.text_field :address_1 %>
 </p>
@@ -95,8 +90,8 @@
 </p>
 
 <p>
-  <%= f.label :landlords_notes %><br/>
-  <%= f.text_area :landlords_notes %>
+  <%= f.label :landlords_notes, @dig.member? ? "Landlords notes" : "Landlords notes (only 140 characters allowed)" %><br/>
+  <%= f.text_area :landlords_notes, :rows => 10 %>
 </p>
 
 <% if in_admin_area? %>

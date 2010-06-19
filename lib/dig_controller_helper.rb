@@ -5,12 +5,12 @@ module DigControllerHelper
     dig_params.merge!('price_per_week_from' => price_per_week_from)
     dig_params.reject!{|k,v| ['price_per_week_from_pence', 'price_per_week_from_pounds'].include?(k)}
 
-    dig_params.delete('member') unless can_edit_membership?
+    dig_params.delete('member') unless in_admin_area?
 
     dig_params
   end
 
-  def can_edit_membership?
+  def in_admin_area?
     self.class.to_s =~ /Admin/
   end
 end

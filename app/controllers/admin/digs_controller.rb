@@ -42,5 +42,5 @@ class Admin::DigsController < AdminController
     redirect_to :action => 'index'
   end
 
-  helper_method :can_edit_membership?
+  helper_method :in_admin_area?
 end

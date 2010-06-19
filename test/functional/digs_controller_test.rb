@@ -110,7 +110,9 @@ class DigOwnerTest < ActionController::TestCase
 
   context "when editing digs" do
     setup do
+      theatre = Factory(:theatre)
       @dig = Factory(:dig, :name => 'Daves Digs')
+      Factory(:theatre_distance, :dig => @dig, :theatre => theatre, :distance => '1.2')
     end
     should "be able to see my information" do
       get :edit, :id => @dig.hash_code
@@ -130,6 +132,10 @@ class DigOwnerTest < ActionController::TestCase
       put :update, :id => @dig.hash_code, :dig => {'member' => true}
       @dig.reload
       assert !@dig.member?
+    end
+    should "not be able edit dig distances" do
+      get :edit, :id => @dig.hash_code
+      assert_select "#dig_theatre_distances_attributes_0_distance", :count => 0
     end
   end
 end

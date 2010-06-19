@@ -99,7 +99,7 @@
   <%= f.text_area :landlords_notes %>
 </p>
 
-<% if can_edit_membership? %>
+<% if in_admin_area? %>
   <br/>
   <p>
     <%= f.label :member, "Is a member" %>
@@ -107,14 +107,15 @@
   </p>
 <% end %>
 
-<fieldset style="border:1px solid #999; margin:20px 0 20px 0; padding:10px">
-  <legend style='margin-left:20px'>Theatre Distances</legend>
-  <% f.fields_for :theatre_distances do |distances_fields| %>
-    <%= label :distance, distances_fields.object.name %>
-    <%= distances_fields.text_field :distance, :size => 10 %>
-  <% end %>
-</fieldset>
-
+<% if in_admin_area? %>
+  <fieldset style="border:1px solid #999; margin:20px 0 20px 0; padding:10px">
+    <legend style='margin-left:20px'>Theatre Distances</legend>
+    <% f.fields_for :theatre_distances do |distances_fields| %>
+      <%= label :distance, distances_fields.object.name %>
+      <%= distances_fields.text_field :distance, :size => 10 %>
+    <% end %>
+  </fieldset>
+<% end %>
 
 <fieldset style="border:1px solid #999; margin:20px 0 20px 0; padding:10px">
   <legend style='margin-left:20px'>Privacy settings</legend>

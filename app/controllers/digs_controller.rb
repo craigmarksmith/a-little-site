@@ -32,7 +32,7 @@ class DigsController < ApplicationController
     redirect_to dig_path(params[:dig_id])
   end
 
-  helper_method :is_authorised?, :can_edit_membership?
+  helper_method :is_authorised?, :in_admin_area?
 
 private
   def is_authorised?

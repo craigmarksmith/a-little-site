@@ -172,6 +172,8 @@ div.dig-details {
 
 .large-image-container {
   padding-bottom:10px;
+  height:400px;
+  width:600px;
 }
 
 .small-image {

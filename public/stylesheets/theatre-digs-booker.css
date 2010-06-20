@@ -158,7 +158,7 @@ ul.footer-menu {
 
 .section {
   float:left;
-  padding:0 20px 20px 0;
+  padding:0 0 20px 0;
 }
 
 #dig .dig-details-container,
@@ -178,25 +178,31 @@ ul.footer-menu {
 
 #dig .landlords-notes {
   float:left;
-  width:60%;
+  width:627px;
   margin-right:10px;
 }
 
 #dig .dig-details-container {
   float:left;
+  padding-right:0;
+  margin-right:0;
 }
 
-#dig ul.dig-details li {
-  width:150px;
+#dig ul.dig-details {
+  margin-bottom: 10px;
 }
 
-#dig ul.dig-details .property {
-  width: 100px;
+#dig .dig-details-container li {
+  width:180px;
+}
+
+#dig .dig-details-container .property {
+  width: 130px;
   display:inline-block;
   font-weight:bold;
 }
 
-#dig ul.dig-details .value {
+#dig .dig-details-container .value {
   text-align:right;
   width: 40px;
   display:inline-block;
@@ -276,6 +282,7 @@ ul.footer-menu {
 
 #dig h2 {
   padding-top:0;
+  padding-bottom: 5px;
   font-size:14px;
 }
 

@@ -8,9 +8,21 @@ class DigsControllerTest < ActionController::TestCase
 
     @dig = Factory(:dig, :name => 'Daves place', :address_1 => '42 Your Mum street')
     @dig.dig_types << Factory(:dig_type, :name => 'Living with Landlord')
+
+    @theatre_1 = Factory(:theatre)
+    @theatre_2 = Factory(:theatre)
+
+    Factory(:theatre_distance, :theatre => @theatre_1, :dig => @dig, :distance => 1.2)
+    Factory(:theatre_distance, :theatre => @theatre_2, :dig => @dig, :distance => 5.9)
   end
 
   context "when looking at a dig" do
+    should "show the distance to all the theatres" do
+      get :show, :id => @dig.id
+      assert_select "#theatre-#{@theatre_1.id} .value", '1.2'
+      assert_select "#theatre-#{@theatre_2.id} .value", '5.9'
+    end
+
     should "not display the price when it's zero" do
       @dig.update_attribute(:price_per_week_from,0)
       get :show, :id => @dig.id

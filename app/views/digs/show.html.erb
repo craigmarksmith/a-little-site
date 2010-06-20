@@ -47,6 +47,16 @@
           <span class="number_of_twin_rooms value"><%= @dig.number_of_twin_rooms %></span>
         </li>
       </ul>
+
+      <h2>Distances</h2>
+      <ul class='dig-distances'>
+        <% @dig.theatre_distances.each do |theatre_distance|%>
+          <li id="theatre-<%= theatre_distance.theatre.id %>">
+            <span class="property"><%= theatre_distance.name %></span>
+            <span class="value"><%= theatre_distance.distance %></span>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 

@@ -11,10 +11,10 @@ class DigsControllerTest < ActionController::TestCase
   end
 
   context "when looking at a dig" do
-    should "say we don't know the price when it's zero" do
+    should "not display the price when it's zero" do
       @dig.update_attribute(:price_per_week_from,0)
       get :show, :id => @dig.id
-      assert_select ".price-per-week-from", 'unknown'
+      assert_select ".price-per-week-from", :count => 0
     end
 
     context "that has images" do

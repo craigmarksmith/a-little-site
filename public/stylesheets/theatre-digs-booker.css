@@ -148,26 +148,41 @@ ul.footer-menu {
 
 .lozenge .loz-left,
 .lozenge .loz-right,
-.image-price-distance,
-div.dig-details {
+.image-price-distance {
   float:left;
+}
+
+#dig .first-paragraph {
+  margin-bottom:10px;
 }
 
 .section {
   float:left;
-  padding:20px;
+  padding:0 20px 20px 0;
 }
 
-#dig .section.dig-details {
-  width:490px;
+#dig .dig-details-container,
+#dig .landlords-notes,
+#dig .address {
+  border: 1px solid #91928E;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding:10px
 }
 
-#address {
+#dig .landlords-notes {
+  float:left;
+  width:60%;
+  margin-right:10px;
+}
+
+#dig .dig-details-container {
+  float:left;
+}
+
+#dig .address {
   clear:both;
-  border: 2px solid #91928E;
-  padding:10px;
-  width:785px;
-  margin: 0 auto;
 }
 
 .large-image-container {
@@ -229,8 +244,18 @@ div.dig-details {
   font-size:10px;
 }
 
+#dig h1, #dig h2 {
+  text-shadow:#999 1px 1px 1px;;
+}
+
 #dig h1 {
-  text-align:center;
+  padding-bottom:0;
+  font-size:30px;
+}
+
+#dig h2 {
+  padding-top:0;
+  font-size:14px;
 }
 
 .address-label {

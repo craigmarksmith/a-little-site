@@ -1,30 +1,40 @@
 <% content_for :title do %><% if is_authorised? %><%= "#{@dig.name} - " %><% end %><% end %>
 
-<div id='dig'>
+<div id='dig' <%= @dig.member? ? "class = 'member'" : '' %>>
   <% if session['last-search'] %><%= link_to 'Back to search results', search_path('search' => session['last-search']) %><% end %>
   <h1 id="name"><%= is_authorised? ? @dig.name : 'Accommodation' %></h1>
-  <div class="section">
+  <p class='first-paragraph'>
+    <span class='dig-building'><%= @dig.building %></span> -
+    <span class='dig-type'><%= @dig.dig_types.first.name %></span>
+    <% if @dig.price_per_week_from > 0 %>
+      <span class='price-from'>- from <strong class="price-per-week-from"><%= price_per_week_from(@dig) %></strong> per week</span>
+    <% end %>
+  </p>
 
+  <div class="section">
     <% if @dig.member? %>
       <%= render :partial => 'member_images' %>
     <% else %>
       <%= render :partial => 'basic_images' %>
     <% end %>
 
-    <% if @dig.price_per_week_from > 0 %>
-      <p>from <strong class="price-per-week-from"><%= price_per_week_from(@dig) %></strong> per week</p>
-    <% else %>
-      <div>Price <span class="price-per-week-from">unknown</span></div>
-    <% end %>
-    <p><span class='dig-type'><%= @dig.dig_types.first.name %></span></p>
-  </div>
-  <div class="section dig-details">
-    <%= render :partial => 'shared/dig_details', :locals => {:dig => @dig} %><br/>
-    <%= h @dig.landlords_notes %>
+    <% unless @dig.price_per_week.nil? or @dig.price_per_week.empty? %><div class='price-per-week'><%= @dig.price_per_week %></div><% end %>
+    <% unless @dig.price_per_night.nil? %><div class='price-per-night'><%= @dig.price_per_night %></div><% end %>
   </div>
 
-  <fieldset id="address">
-    <legend>Contact Details:</legend>
+  <div class="section">
+    <div class='landlords-notes'>
+      <h2>Description</h2>
+      <%= h @dig.landlords_notes %>
+    </div>
+    <div class='dig-details-container'>
+      <h2>Details</h2>
+      <%= render :partial => 'shared/dig_details', :locals => {:dig => @dig} %>
+    </div>
+  </div>
+
+  <div class="address">
+    <h2>Contact Details</h2>
     <% if is_authorised? %>
       <%= address_line(@dig.address_1, 'Address') %>
       <%= address_line(@dig.address_2) %>
@@ -44,5 +54,5 @@
         <%= link_to 'What is a tour code?', '/faq#what-is-the-tour-code', :class => 'what-is-a-tour-code' %>
       <% end %>
     <% end %>
-  </fieldset>
+  </div>
 </div>

@@ -83,7 +83,7 @@ class SearchControllerTest < ActionController::TestCase
 
     should "show the first image" do
       assert_select "ul li#dig-#{@dig_1.id}" do
-        assert_select "img[src=?]", "/photos/thumb/missing.png"
+        assert_select "img[src=?]", "/photos/medium/missing.png"
       end
     end
 

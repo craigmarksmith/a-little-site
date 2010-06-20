@@ -32,7 +32,12 @@ class Admin::DigsController < AdminController
   end
 
   def update
-    Dig.find(params[:id]).update_attributes(dig_params)
+    @dig = Dig.find(params[:id])
+    @dig.update_attributes(dig_params)
+    unless @dig.valid?
+      render :action => "new"
+      return
+    end
     redirect_to :action => 'index'
   end
 

@@ -18,8 +18,12 @@
       <%= render :partial => 'basic_images' %>
     <% end %>
 
-    <% unless @dig.price_per_week.nil? or @dig.price_per_week.empty? %><div class='price-per-week'><%= @dig.price_per_week %></div><% end %>
-    <% unless @dig.price_per_night.nil? %><div class='price-per-night'><%= @dig.price_per_night %></div><% end %>
+    <% unless @dig.price_per_week.nil? or @dig.price_per_week.empty? %>
+      <div>Price per week: <span class='price-per-week'><%= @dig.price_per_week %></span></div>
+    <% end %>
+    <% unless @dig.price_per_night.nil? %>
+      <div>Price per night: <span class='price-per-night'><%= @dig.price_per_night %></span></div>
+    <% end %>
   </div>
 
   <div class="section">

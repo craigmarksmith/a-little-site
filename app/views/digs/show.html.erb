@@ -29,7 +29,24 @@
     </div>
     <div class='dig-details-container'>
       <h2>Details</h2>
-      <%= render :partial => 'shared/dig_details', :locals => {:dig => @dig} %>
+      <ul class="dig-details">
+        <li>
+          <span class="property">Double rooms</span>
+          <span class="number_of_double_rooms value"><%= @dig.number_of_double_rooms %></span>
+        </li>
+        <li>
+          <span class="property">Sofa beds</span>
+          <span class="number_of_sofa_beds value"><%= @dig.number_of_sofa_beds %></span>
+        </li>
+        <li>
+          <span class="property">Single rooms</span>
+          <span class="number_of_single_rooms value"><%= @dig.number_of_single_rooms %></span>
+        </li>
+        <li>
+          <span class="property">Twin rooms</span>
+          <span class="number_of_twin_rooms value"><%= @dig.number_of_twin_rooms %></span>
+        </li>
+      </ul>
     </div>
   </div>
 

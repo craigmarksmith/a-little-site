@@ -1,6 +1,6 @@
 <div class='loz-left'>
   <% if dig.images.first %>
-    <%= image_tag dig.images.first.photo.url(:thumb), :alt => '' %>
+    <%= image_tag dig.images.first.photo.url(:medium), :alt => '' %>
   <% else %>
     <%= image_tag "/images/image-coming-soon.png", :alt => '' %>
   <% end %>

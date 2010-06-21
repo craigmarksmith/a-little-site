@@ -41,6 +41,18 @@ class Admin::DigsController < AdminController
     redirect_to :action => 'index'
   end
 
+  def toggle_published
+    @dig = Dig.find(params[:id])
+
+    if @dig.published?
+      @dig.update_attribute(:published, false)
+    else
+      @dig.update_attribute(:published, true)
+    end
+
+    redirect_to :action => 'index'
+  end
+
   def upload_dig_sheet
     file = params[:upload]['datafile']
     HotelsImporter.import(file.path)

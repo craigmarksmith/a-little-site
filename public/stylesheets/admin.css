@@ -82,6 +82,11 @@ tr.even {
   background-color:#E5ECF9;
 }
 
+tr.unpublished, tr.unpublished a {
+  color:#FFF;
+  background-color:#ccc;
+}
+
 tr:hover {
   background-color:#FFCA73;
 }

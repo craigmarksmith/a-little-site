@@ -20,6 +20,7 @@ class Search
   def results
     return [] unless valid?
     dig_conditions = []
+    dig_conditions << "published = true"
     dig_conditions << "dig_types.id = :dig_type_id" if dig_type_id && !dig_type_id.empty?
     dig_conditions << "theatres.id = :theatre_id" if theatre_id && !theatre_id.empty?
     dig_conditions << "number_of_sofa_beds >= :number_of_sofa_beds" if number_of_sofa_beds

@@ -62,19 +62,28 @@ class SearchControllerTest < ActionController::TestCase
       @dig_2 = Factory(:dig, :name => "No places", :number_of_double_rooms => 2, :price_per_week_from => 900)
       @dig_3 = Factory(:dig, :name => "Pretty far", :number_of_double_rooms => 2, :price_per_week_from => 0)
 
+      @dig_4 = Factory(:dig, :name => "Unpublished", :number_of_double_rooms => 2, :price_per_week_from => 200, :published => false)
+
+
       dig_type = Factory(:dig_type, :name => 'Living with Landlord')
 
       @dig_1.dig_types << dig_type
       @dig_2.dig_types << dig_type
       @dig_3.dig_types << dig_type
+      @dig_4.dig_types << dig_type
 
       @dig_1.images << Factory(:image)
       @dig_1.save!
 
       Factory(:theatre_distance, :dig => @dig_1, :theatre => @theatre_1, :distance => 1.4 )
       Factory(:theatre_distance, :dig => @dig_3, :theatre => @theatre_1, :distance => 0.3 )
+      Factory(:theatre_distance, :dig => @dig_4, :theatre => @theatre_1, :distance => 3.4 )
 
       get :search, basic_search_params('theatre_id' => @theatre_1.id.to_s)
+    end
+
+    should "not show unpublished digs" do
+      assert_select "ul li#dig-#{@dig_4.id}", :count => 0
     end
 
     should "save the search to the session so we can go back" do

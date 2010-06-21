@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100615104222) do
+ActiveRecord::Schema.define(:version => 20100621084929) do
 
   create_table "dig_types", :force => true do |t|
     t.string   "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20100615104222) do
     t.string   "building"
     t.string   "price_per_week"
     t.boolean  "member",                 :default => false
+    t.boolean  "published",              :default => true
   end
 
   add_index "digs", ["hash_code"], :name => "index_digs_on_hash_code"

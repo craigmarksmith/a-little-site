@@ -6,6 +6,7 @@ end
 
 Factory.define :dig do |d|
   d.name{ Factory.next :dig_name }
+  d.published true
 end
 
 Factory.define :dig_type do |dt|

@@ -12,7 +12,7 @@ class Admin::DigsController < AdminController
   end
 
   def create
-    @dig = Dig.new(params[:dig])
+    @dig = Dig.new(dig_params)
     unless @dig.valid?
       render :action => "new"
       return

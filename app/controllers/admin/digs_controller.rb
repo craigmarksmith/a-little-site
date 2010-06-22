@@ -18,6 +18,10 @@ class Admin::DigsController < AdminController
       return
     end
 
+    Theatre.all.each do |theatre|
+      @dig.theatre_distances << TheatreDistance.create!(:theatre => theatre, :dig => @dig, :distance => 0)
+    end
+
     @dig.save!
     redirect_to :action => 'index'
   end

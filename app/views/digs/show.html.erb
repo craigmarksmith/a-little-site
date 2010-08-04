@@ -2,6 +2,8 @@
 
 <div id='dig' <%= @dig.member? ? "class = 'member'" : '' %>>
   <% if session['last-search'] %><%= link_to 'Back to search results', search_path('search' => session['last-search']) %><% end %>
+  <%= link_to "Report Invalid Dig", new_invalid_dig_path(:dig_id => @dig.id), :class => 'report-dig' %>
+
   <h1 id="name"><%= is_authorised? ? @dig.name : 'Accommodation' %></h1>
   <p class='first-paragraph'>
     <span class='dig-building'><%= @dig.building %></span> -

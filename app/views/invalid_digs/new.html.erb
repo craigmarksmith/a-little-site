@@ -1,0 +1,12 @@
+<h1>What's the problem?</h1>
+<p>We aim to only list relevant, up-to-date accommodation but some people change their mind or slip through the net. If you report it we will double-check and update there details or remove them from the site.</p>
+
+<% form_for @message, :url => invalid_digs_path, :html => {:class => 'whats-the-problem'} do |f| %>
+  <% unless @message.errors.empty? %>
+    <p class="error">Sorry, could you please be a little more specific about your issue with this dig. Your message can't be blank.</p>
+  <% end %>
+  <%= hidden_field_tag 'message[dig_id]', @message.dig_id %>
+  <%= text_area_tag "message[message]", @message.message, :rows => 6, :cols => 50, :class => 'message' %><br/>
+  <%= submit_tag "Send" %>
+<% end %>
+

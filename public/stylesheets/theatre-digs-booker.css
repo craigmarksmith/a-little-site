@@ -81,7 +81,7 @@ h1, h2, h3 {
 }
 
 #one-column-content {
-  padding:0 30px 30px 30px;
+  padding:10px 30px 30px 30px;
 }
 
 #footer {
@@ -129,8 +129,11 @@ ul.footer-menu {
 
 .error {
   color:red;
-  margin-left:114px;
   font-size:11px;
+}
+
+#search-form .error {
+  margin-left:114px;
 }
 
 .hidden {
@@ -308,4 +311,12 @@ form.sort {
   font-size:11px;
   padding-top:5px;
   padding-bottom:20px;
+}
+
+.flash {
+  background-color: #A4E7A0; 
+  border: 1px solid #26722D;
+  margin-bottom:10px;
+  padding: 10px;
+  text-align:center;
 }

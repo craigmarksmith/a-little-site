@@ -32,6 +32,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :user_sessions
   map.search '/search', :controller => 'search', :action => 'search'
 
+  map.resources :invalid_digs
+
   map.resources :digs, :collection => {:authorise => :post} do |digs|
     digs.resources :images
   end

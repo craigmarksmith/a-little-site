@@ -17,6 +17,12 @@ class DigsControllerTest < ActionController::TestCase
   end
 
   context "when looking at a dig" do
+    should "be able to report an invalid dig" do
+      get :show, :id => @dig.id
+      assert_select "#dig a.report-dig", :text => "Report Invalid Dig"
+      assert_select "#dig a.report-dig[href*=?]", @dig.id
+    end
+
     should "show the distance to all the theatres" do
       get :show, :id => @dig.id
       assert_select "#theatre-#{@theatre_1.id} .value", '1.2'

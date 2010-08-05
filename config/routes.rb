@@ -43,6 +43,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.homepage '/', :controller => "home"
     admin.resources :theatres
+    admin.resources :invalid_dig_messages
     admin.resources :digs, :collection => {:upload_dig_sheet_form => :get, :upload_dig_sheet => :post, :regenerate_dig_path => :post, :toggle_published => :post} do |digs|
       digs.resources :images
     end

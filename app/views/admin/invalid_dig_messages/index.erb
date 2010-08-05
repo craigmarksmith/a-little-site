@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>Message</th>
+    <th>Dig Name</th>
+    <th></th>
+  </tr>
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= h truncate(message.message, :length => 40) %></td>
+    <td><%= message.dig.name %></td>
+    <td><%= link_to "View", admin_invalid_dig_message_path(message) %></td>
+  </tr>
+<% end %>
+</table>

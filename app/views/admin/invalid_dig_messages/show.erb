@@ -1,0 +1,8 @@
+<label for="message">Message:</label>
+<div id="message"><%= h @message.message %></div>
+<br/>
+<label for="message">Dig:</label>
+<div id="message">
+  <%= link_to @message.dig.name, dig_path(@message.dig) %>
+  <%= link_to "Edit", edit_admin_dig_path(@message.dig) %>
+</div>

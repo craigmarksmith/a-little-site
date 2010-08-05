@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100621091743) do
+ActiveRecord::Schema.define(:version => 20100805102327) do
 
   create_table "dig_types", :force => true do |t|
     t.string   "name"
@@ -52,14 +52,19 @@ ActiveRecord::Schema.define(:version => 20100621091743) do
     t.boolean  "published",              :default => true
   end
 
-  add_index "digs", ["hash_code"], :name => "index_digs_on_hash_code"
-
   create_table "images", :force => true do |t|
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.integer  "dig_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invalid_dig_messages", :force => true do |t|
+    t.integer  "dig_id"
+    t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

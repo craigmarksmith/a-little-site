@@ -86,7 +86,7 @@
           <%= link_to "Report Invalid Dig", new_invalid_dig_path(:dig_id => @dig.id), :class => 'report-dig' %>
         </p>
       </div>
-      <div style="clear:left"></div>
+      <div style="clear:both"></div>
     <% else %>
       <% form_tag authorise_digs_path(:dig_id => @dig.id), :class => 'tour-form' do %>
         <h3>Requires a tour code</h3>

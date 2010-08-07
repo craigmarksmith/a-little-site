@@ -18,6 +18,7 @@ class DigsControllerTest < ActionController::TestCase
 
   context "when looking at a dig" do
     should "be able to report an invalid dig" do
+      @dig.update_attribute(:privacy, Dig::PRIVACY_ANYONE)
       get :show, :id => @dig.id
       assert_select "#dig a.report-dig", :text => "Report Invalid Dig"
       assert_select "#dig a.report-dig[href*=?]", @dig.id

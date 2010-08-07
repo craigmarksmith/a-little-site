@@ -179,6 +179,16 @@ ul.footer-menu {
   padding:10px
 }
 
+#dig .address .details {
+  width:80%;
+  float:left;
+}
+
+#dig .address .problem {
+  float:right;
+  text-align:center;
+}
+
 #dig .landlords-notes {
   float:left;
   width:627px;

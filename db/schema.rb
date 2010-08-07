@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20100805102327) do
     t.boolean  "published",              :default => true
   end
 
+  add_index "digs", ["hash_code"], :name => "index_digs_on_hash_code"
+
   create_table "images", :force => true do |t|
     t.string   "photo_file_name"
     t.string   "photo_content_type"

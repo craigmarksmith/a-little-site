@@ -2,7 +2,6 @@
 
 <div id='dig' <%= @dig.member? ? "class = 'member'" : '' %>>
   <% if session['last-search'] %><%= link_to 'Back to search results', search_path('search' => session['last-search']) %><% end %>
-  <%= link_to "Report Invalid Dig", new_invalid_dig_path(:dig_id => @dig.id), :class => 'report-dig' %>
 
   <h1 id="name"><%= is_authorised? ? @dig.name : 'Accommodation' %></h1>
   <p class='first-paragraph'>
@@ -69,13 +68,25 @@
   <div class="address">
     <h2>Contact Details</h2>
     <% if is_authorised? %>
-      <%= address_line(@dig.address_1, 'Address') %>
-      <%= address_line(@dig.address_2) %>
-      <%= address_line(@dig.address_3) %>
-      <%= address_line(@dig.postcode, 'Postcode') %>
-      <%= address_line(@dig.landline, 'Landline') %>
-      <%= address_line(@dig.mobile, 'Mobile') %>
-      <%= address_line(@dig.fax, 'Fax') %>
+      <div class='details'>
+        <%= address_line(@dig.address_1, 'Address') %>
+        <%= address_line(@dig.address_2) %>
+        <%= address_line(@dig.address_3) %>
+        <%= address_line(@dig.postcode, 'Postcode') %>
+        <%= address_line(@dig.landline, 'Landline') %>
+        <%= address_line(@dig.mobile, 'Mobile') %>
+        <%= address_line(@dig.fax, 'Fax') %>
+      </div>
+      <div class='problem'>
+        <%= image_tag "/images/thumbs-down.png", :alt => '' %>
+        <p>
+          Something wrong?<br/>
+          No longer offers digs?<br/>
+          Incorrect details?<br/>
+          <%= link_to "Report Invalid Dig", new_invalid_dig_path(:dig_id => @dig.id), :class => 'report-dig' %>
+        </p>
+      </div>
+      <div style="clear:left"></div>
     <% else %>
       <% form_tag authorise_digs_path(:dig_id => @dig.id), :class => 'tour-form' do %>
         <h3>Requires a tour code</h3>
